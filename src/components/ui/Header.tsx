@@ -6,10 +6,10 @@ import { cn } from "@/lib/utils";
 import { Link } from "@tanstack/react-router";
 
 const menuItems = [
-  { name: "Features", href: "#link" },
-  { name: "Solution", href: "#link" },
-  { name: "Pricing", href: "#link" },
-  { name: "About", href: "#link" },
+  { name: "Ideas", to: "/ideas/" },
+  { name: "Solution", to: "#link" },
+  { name: "Pricing", to: "#link" },
+  { name: "About", to: "#link" },
 ];
 const Header = () => {
   const [menuState, setMenuState] = React.useState(false);
@@ -36,10 +36,25 @@ const Header = () => {
             <div className="flex w-full justify-between lg:w-auto">
               <Link
                 to="/"
-                aria-label="home"
-                className="flex items-center  space-x-2"
+                aria-label="Idea Drop Home"
+                className="group flex items-center gap-3 transition-all"
               >
-                <img src={Logo} alt="" className="w-10 h-10 rounded-xl" />
+                {/* Logo */}
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl  bg-primary  shadow-sm transition-transform duration-200 group-hover:scale-105">
+                  <img
+                    src={Logo}
+                    alt="Idea Drop Logo"
+                    className="h-6 w-6 rounded-md object-contain"
+                  />
+                </div>
+
+                {/* Brand Name */}
+                <span className="text-lg font-semibold tracking-tight text-foreground transition-colors group-hover:text-indigo-500">
+                  Idea
+                  <span className="font-bold text-indigo-500 group-hover:text-purple-600">
+                    Drop
+                  </span>
+                </span>
               </Link>
 
               <button
@@ -55,11 +70,13 @@ const Header = () => {
             <div className="absolute inset-0 m-auto hidden size-fit lg:block">
               <ul className="flex gap-8 text-sm">
                 {menuItems.map((item, index) => (
-                  <li key={index}>
-                    <Button className="text-muted-foreground hover:text-accent-foreground block duration-150">
+                  <Link to={item.to} key={index}>
+                    <Button
+                      className={` text-accent-foreground font-bold hover:text-accent-foreground block duration-150`}
+                    >
                       <span>{item.name}</span>
                     </Button>
-                  </li>
+                  </Link>
                 ))}
               </ul>
             </div>
@@ -69,9 +86,12 @@ const Header = () => {
                 <ul className="space-y-6 text-base">
                   {menuItems.map((item, index) => (
                     <li key={index}>
-                      <Button className="text-muted-foreground hover:text-accent-foreground block duration-150">
+                      <Link
+                        to={item.to}
+                        className="text-accent-foreground  flex justify-center align-middle items-center flex duration-150"
+                      >
                         <span>{item.name}</span>
-                      </Button>
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -81,28 +101,15 @@ const Header = () => {
                   asChild
                   variant="outline"
                   size="sm"
-                  className={cn(isScrolled && "lg:hidden")}
+                  className={cn(isScrolled)}
                 >
                   <Button>
                     <span>Login</span>
                   </Button>
                 </Button>
-                <Button
-                  asChild
-                  size="sm"
-                  className={cn(isScrolled && "lg:hidden")}
-                >
+                <Button asChild size="sm" className={cn(isScrolled)}>
                   <Button>
                     <span>Sign Up</span>
-                  </Button>
-                </Button>
-                <Button
-                  asChild
-                  size="sm"
-                  className={cn(isScrolled ? "lg:inline-flex" : "hidden")}
-                >
-                  <Button>
-                    <span>Get Started</span>
                   </Button>
                 </Button>
               </div>
