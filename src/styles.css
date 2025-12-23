@@ -23,7 +23,6 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
 :root {
   --background: oklch(0.99 0 0);
   --foreground: oklch(0 0 0);
@@ -31,10 +30,10 @@ code {
   --card-foreground: oklch(0 0 0);
   --popover: oklch(0.99 0 0);
   --popover-foreground: oklch(0 0 0);
-  --primary: oklch(0.4407 0.2947 266.2658);
-  --primary-foreground: oklch(0.9568 0.0065 17.27);
-  --secondary: oklch(0.4407 0.2947 266.2658);
-  --secondary-foreground: oklch(1 0 0);
+  --primary: oklch(0.4627 0.306 268.9919);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.94 0 0);
+  --secondary-foreground: oklch(0 0 0);
   --muted: oklch(0.97 0 0);
   --muted-foreground: oklch(0.44 0 0);
   --accent: oklch(0.94 0 0);
@@ -57,7 +56,7 @@ code {
   --sidebar-accent-foreground: oklch(0 0 0);
   --sidebar-border: oklch(0.94 0 0);
   --sidebar-ring: oklch(0 0 0);
-  --font-sans: Geist, sans-serif;
+  --font-sans: Roboto, ui-sans-serif, sans-serif, system-ui;
   --font-serif: Georgia, serif;
   --font-mono: Geist Mono, monospace;
   --radius: 0.5rem;
@@ -91,19 +90,19 @@ code {
   --card-foreground: oklch(1 0 0);
   --popover: oklch(0.18 0 0);
   --popover-foreground: oklch(1 0 0);
-  --primary: oklch(1 0 0);
-  --primary-foreground: oklch(0.4407 0.2947 266.2658);
-  --secondary: oklch(0.4407 0.2947 266.2658);
+  --primary: oklch(0.4627 0.306 268.9919);
+  --primary-foreground: oklch(0.9432 0.0043 17.2341);
+  --secondary: oklch(0.4992 0.2845 287.0727);
   --secondary-foreground: oklch(1 0 0);
-  --muted: oklch(0.23 0 0);
+  --muted: oklch(0 0 0);
   --muted-foreground: oklch(0.72 0 0);
   --accent: oklch(0.32 0 0);
   --accent-foreground: oklch(1 0 0);
   --destructive: oklch(0.69 0.2 23.91);
   --destructive-foreground: oklch(0 0 0);
-  --border: oklch(0.26 0 0);
-  --input: oklch(0.32 0 0);
-  --ring: oklch(0.72 0 0);
+  --border: oklch(0.3801 0.0014 17.2174);
+  --input: oklch(0.4627 0.306 268.9919);
+  --ring: oklch(0.4043 0.2648 265.3119);
   --chart-1: oklch(0.81 0.17 75.35);
   --chart-2: oklch(0.58 0.21 260.84);
   --chart-3: oklch(0.56 0 0);
@@ -117,7 +116,7 @@ code {
   --sidebar-accent-foreground: oklch(1 0 0);
   --sidebar-border: oklch(0.32 0 0);
   --sidebar-ring: oklch(0.72 0 0);
-  --font-sans: Geist, sans-serif;
+  --font-sans: Roboto, ui-sans-serif, sans-serif, system-ui;
   --font-serif: Georgia, serif;
   --font-mono: Geist Mono, monospace;
   --radius: 0.5rem;

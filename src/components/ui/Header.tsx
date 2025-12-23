@@ -1,7 +1,9 @@
 import { Menu, X } from "lucide-react";
+import Logo from "/public/favicon.png";
 import { Button } from "@/components/ui/button";
 import React from "react";
 import { cn } from "@/lib/utils";
+import { Link } from "@tanstack/react-router";
 
 const menuItems = [
   { name: "Features", href: "#link" },
@@ -32,13 +34,13 @@ const Header = () => {
         >
           <div className="relative flex flex-wrap items-center justify-between gap-6 py-3 lg:gap-0 lg:py-4">
             <div className="flex w-full justify-between lg:w-auto">
-              <a
-                href="/"
+              <Link
+                to="/"
                 aria-label="home"
                 className="flex items-center  space-x-2"
               >
-                Idea Drop
-              </a>
+                <img src={Logo} alt="" className="w-10 h-10 rounded-xl" />
+              </Link>
 
               <button
                 onClick={() => setMenuState(!menuState)}

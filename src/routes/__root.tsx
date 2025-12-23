@@ -3,7 +3,7 @@ import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import { Toaster } from "sonner";
 import { TanStackDevtools } from "@tanstack/react-devtools";
 
-import Header from "../components/Header";
+import Header from "../components/ui/Header";
 
 import TanStackQueryDevtools from "../integrations/tanstack-query/devtools";
 
@@ -16,7 +16,7 @@ interface MyRouterContext {
 export const Route = createRootRouteWithContext<MyRouterContext>()({
   component: () => (
     <>
-      <div className="min-h-screen dark bg-background  text-foreground max-w-screen">
+      <div className="min-h-screen light bg-background  text-foreground max-w-screen">
         <Header />
         <Outlet />
         <Toaster expand={true} richColors position={"top-center"} />
