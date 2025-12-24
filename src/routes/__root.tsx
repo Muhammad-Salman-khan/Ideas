@@ -7,7 +7,7 @@ import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import { Toaster } from "sonner";
 import { TanStackDevtools } from "@tanstack/react-devtools";
 
-import Header from "../components/ui/Header";
+import { Header } from "../components/ui/Header";
 
 import TanStackQueryDevtools from "../integrations/tanstack-query/devtools";
 
@@ -21,8 +21,6 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
   head: () => ({
     title: "Ideas Hub – Discover, Share & Build Startup Ideas",
     meta: [
-      { charset: "utf-8" },
-
       {
         name: "viewport",
         content: "width=device-width, initial-scale=1",

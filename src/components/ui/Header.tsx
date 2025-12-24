@@ -1,17 +1,18 @@
+import Logo from "../../../public/favicon.png";
 import { Menu, X } from "lucide-react";
-import Logo from "/public/favicon.png";
 import { Button } from "@/components/ui/button";
 import React from "react";
 import { cn } from "@/lib/utils";
 import { Link } from "@tanstack/react-router";
 
 const menuItems = [
-  { name: "Ideas", to: "/ideas/" },
-  { name: "Solution", to: "#link" },
-  { name: "Pricing", to: "#link" },
-  { name: "About", to: "#link" },
+  { name: "Features", href: "#link" },
+  { name: "Solution", href: "#link" },
+  { name: "Pricing", href: "#link" },
+  { name: "About", href: "#link" },
 ];
-const Header = () => {
+
+export const Header = () => {
   const [menuState, setMenuState] = React.useState(false);
   const [isScrolled, setIsScrolled] = React.useState(false);
 
@@ -23,11 +24,14 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
   return (
-    <header className="sticky top-0 max-w-full">
-      <nav data-state={menuState && "active"}>
+    <header className="sticky bg-background text-foreground top-0 max-w-full">
+      <nav
+        data-state={menuState && "active"}
+        className="sticky z-100 max-w-full px-2"
+      >
         <div
           className={cn(
-            "mx-auto  max-w-6xl px-6 bg-background text-foreground transition-all duration-300 lg:px-12",
+            "mx-auto  max-w-6xl px-6 transition-all duration-300 lg:px-12",
             isScrolled &&
               "bg-background/50 max-w-4xl rounded-2xl border backdrop-blur-lg lg:px-5"
           )}
@@ -40,11 +44,11 @@ const Header = () => {
                 className="group flex items-center gap-3 transition-all"
               >
                 {/* Logo */}
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl  bg-primary  shadow-sm transition-transform duration-200 group-hover:scale-105">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 shadow-sm transition-transform duration-200 group-hover:scale-105">
                   <img
                     src={Logo}
                     alt="Idea Drop Logo"
-                    className="h-6 w-6 rounded-md object-contain"
+                    className="h-6 w-6 object-contain"
                   />
                 </div>
 
@@ -70,25 +74,26 @@ const Header = () => {
             <div className="absolute inset-0 m-auto hidden size-fit lg:block">
               <ul className="flex gap-8 text-sm">
                 {menuItems.map((item, index) => (
-                  <Link to={item.to} key={index}>
-                    <Button
-                      className={` text-accent-foreground font-bold hover:text-accent-foreground block duration-150`}
+                  <li key={index}>
+                    <Link
+                      to={item.href}
+                      className="text-muted-foreground hover:text-accent-foreground block duration-150"
                     >
                       <span>{item.name}</span>
-                    </Button>
-                  </Link>
+                    </Link>
+                  </li>
                 ))}
               </ul>
             </div>
 
             <div className="bg-background in-data-[state=active]:block lg:in-data-[state=active]:flex mb-6 hidden w-full flex-wrap items-center justify-end space-y-8 rounded-3xl border p-6 shadow-2xl shadow-zinc-300/20 md:flex-nowrap lg:m-0 lg:flex lg:w-fit lg:gap-6 lg:space-y-0 lg:border-transparent lg:bg-transparent lg:p-0 lg:shadow-none dark:shadow-none dark:lg:bg-transparent">
-              <div className="lg:hidden">
+              <div className="flex justify-center align-middle items-center lg:hidden">
                 <ul className="space-y-6 text-base">
                   {menuItems.map((item, index) => (
                     <li key={index}>
                       <Link
-                        to={item.to}
-                        className="text-accent-foreground  flex justify-center align-middle items-center flex duration-150"
+                        to={item.href}
+                        className="text-muted-foreground hover:text-accent-foreground block duration-150"
                       >
                         <span>{item.name}</span>
                       </Link>
@@ -98,19 +103,18 @@ const Header = () => {
               </div>
               <div className="flex w-full flex-col space-y-3 sm:flex-row sm:gap-3 sm:space-y-0 md:w-fit">
                 <Button
-                  asChild
                   variant="outline"
                   size="sm"
-                  className={cn(isScrolled)}
+                  className={cn(isScrolled && "")}
                 >
-                  <Button>
+                  <Link to="/">
                     <span>Login</span>
-                  </Button>
+                  </Link>
                 </Button>
-                <Button asChild size="sm" className={cn(isScrolled)}>
-                  <Button>
+                <Button size="sm" className={cn(isScrolled && "")}>
+                  <Link to="/">
                     <span>Sign Up</span>
-                  </Button>
+                  </Link>
                 </Button>
               </div>
             </div>
@@ -120,4 +124,3 @@ const Header = () => {
     </header>
   );
 };
-export default Header;
