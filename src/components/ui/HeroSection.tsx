@@ -11,7 +11,7 @@ export default function HeroSection() {
               {/* LEFT: TEXT */}
               <div className="max-w-lg text-center lg:w-1/2 lg:text-left">
                 <h1 className="mt-8 text-balance text-5xl font-medium md:text-6xl xl:text-7xl">
-                  Ship 10x Faster with NS
+                  Ship 10x Faster with IdeaDrop
                 </h1>
 
                 <p className="mt-8 text-pretty text-lg text-muted-foreground">
