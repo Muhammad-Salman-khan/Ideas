@@ -114,7 +114,7 @@ export const Header = () => {
                   {Theme === "dark" ? <Sun /> : <Moon />}
                 </Button>
                 <Button
-                  variant="outline"
+                  variant="default"
                   size="sm"
                   className={cn(
                     isScrolled && "bg-primary text-primary-foreground "
