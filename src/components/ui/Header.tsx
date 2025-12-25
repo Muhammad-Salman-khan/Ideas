@@ -4,15 +4,22 @@ import { Button } from "@/components/ui/button";
 import React from "react";
 import { cn } from "@/lib/utils";
 import { Link } from "@tanstack/react-router";
+import { useTheme } from "@/Contexts/ThemeContext";
+import { Moon, Sun } from "lucide-react";
 
 const menuItems = [
   { name: "Features", href: "#link" },
   { name: "Solution", href: "#link" },
   { name: "Pricing", href: "#link" },
-  { name: "About", href: "#link" },
+  { name: "About", href: "/about" },
 ];
-
+interface SwitchThemeType {
+  theme: "light" | "dark";
+  Theme: "light" | "dark";
+  switchTheme: () => void;
+}
 export const Header = () => {
+  const { Theme, switchTheme }: SwitchThemeType = useTheme();
   const [menuState, setMenuState] = React.useState(false);
   const [isScrolled, setIsScrolled] = React.useState(false);
 
@@ -24,16 +31,16 @@ export const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
   return (
-    <header className="sticky bg-background text-foreground top-0 max-w-full">
+    <header className="sticky bg-background z-50 text-foreground top-0 max-w-full">
       <nav
         data-state={menuState && "active"}
-        className="sticky z-100 max-w-full px-2"
+        className="sticky  max-w-full px-2"
       >
         <div
           className={cn(
             "mx-auto  max-w-6xl px-6 transition-all duration-300 lg:px-12",
             isScrolled &&
-              "bg-background/50 max-w-4xl rounded-2xl border backdrop-blur-lg lg:px-5"
+              "bg-background/80 max-w-4xl rounded-2xl border backdrop-blur-lg lg:px-5"
           )}
         >
           <div className="relative flex flex-wrap items-center justify-between gap-6 py-3 lg:gap-0 lg:py-4">
@@ -103,9 +110,19 @@ export const Header = () => {
               </div>
               <div className="flex w-full flex-col space-y-3 sm:flex-row sm:gap-3 sm:space-y-0 md:w-fit">
                 <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => switchTheme()}
+                  className={cn(isScrolled && ``)}
+                >
+                  {Theme === "dark" ? <Sun /> : <Moon />}
+                </Button>
+                <Button
                   variant="outline"
                   size="sm"
-                  className={cn(isScrolled && "")}
+                  className={cn(
+                    isScrolled && "bg-primary text-primary-foreground "
+                  )}
                 >
                   <Link to="/">
                     <span>Login</span>

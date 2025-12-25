@@ -9,6 +9,7 @@ import { routeTree } from "./routeTree.gen";
 
 import "./styles.css";
 import reportWebVitals from "./reportWebVitals.ts";
+import ThemeContext from "./Contexts/ThemeContext.tsx";
 const TanStackQueryProviderContext = TanStackQueryProvider.getContext();
 const router = createRouter({
   routeTree,
@@ -33,7 +34,9 @@ if (rootElement && !rootElement.innerHTML) {
   root.render(
     <StrictMode>
       <TanStackQueryProvider.Provider {...TanStackQueryProviderContext}>
-        <RouterProvider router={router} />
+        <ThemeContext>
+          <RouterProvider router={router} />
+        </ThemeContext>
       </TanStackQueryProvider.Provider>
     </StrictMode>
   );

@@ -33,7 +33,7 @@ export default function HeroSection() {
                   <Button
                     size="lg"
                     variant="ghost"
-                    className="px-6 text-base border-2 border-black"
+                    className="px-6 text-base border-2 dark:border-white border-black"
                     render={<Link to="/" />}
                     nativeButton={false}
                   >
