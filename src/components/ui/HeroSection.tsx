@@ -4,8 +4,6 @@ import Logo from "../../../public/favicon.png";
 import { useState } from "react";
 import { TextLoop } from "./text-loop";
 export default function HeroSection() {
-  const [direction, setDirection] = useState(-1);
-
   return (
     <>
       <main className="overflow-x-hidden">
@@ -26,15 +24,12 @@ export default function HeroSection() {
                     mass: 1.2,
                   }}
                   interval={2.5}
-                  onIndexChange={(index) => {
-                    setDirection(index === 0 ? -1 : 1);
-                  }}
                   variants={{
                     initial: {
-                      y: -direction * 20,
-                      rotateX: -direction * 90,
+                      y: -1 * 20,
+                      rotateX: -1 * 90,
                       opacity: 0,
-                      filter: "blur(4px)",
+                      filter: "blur(10px)",
                     },
                     animate: {
                       y: 0,
@@ -43,8 +38,8 @@ export default function HeroSection() {
                       filter: "blur(0px)",
                     },
                     exit: {
-                      y: -direction * 20,
-                      rotateX: -direction * 90,
+                      y: -1 * 20,
+                      rotateX: -1 * 90,
                       opacity: 0,
                       filter: "blur(4px)",
                     },
