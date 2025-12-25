@@ -13,13 +13,8 @@ const menuItems = [
   { name: "Pricing", href: "#link" },
   { name: "About", href: "/about" },
 ];
-interface SwitchThemeType {
-  theme: "light" | "dark";
-  Theme: "light" | "dark";
-  switchTheme: () => void;
-}
 export const Header = () => {
-  const { Theme, switchTheme }: SwitchThemeType = useTheme();
+  const { Theme, switchTheme }: any = useTheme();
   const [menuState, setMenuState] = React.useState(false);
   const [isScrolled, setIsScrolled] = React.useState(false);
 
