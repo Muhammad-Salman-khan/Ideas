@@ -1,7 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "@tanstack/react-router";
 import Logo from "../../../public/favicon.png";
+import { useState } from "react";
+import { TextLoop } from "./text-loop";
 export default function HeroSection() {
+  const [direction, setDirection] = useState(-1);
+
   return (
     <>
       <main className="overflow-x-hidden">
@@ -11,16 +15,49 @@ export default function HeroSection() {
               {/* LEFT: TEXT */}
               <div className="max-w-lg text-center lg:w-1/2 lg:text-left">
                 <h1 className="mt-8 text-balance text-5xl font-extrabold md:text-6xl xl:text-7xl">
-                  Post once.{" "}
-                  <span className="text-primary"> Build smarter</span>
-                </h1>
-
+                  Post once.
+                </h1>{" "}
+                <TextLoop
+                  className="text-primary text-balance text-5xl font-extrabold "
+                  transition={{
+                    type: "spring",
+                    stiffness: 100,
+                    damping: 19,
+                    mass: 1.2,
+                  }}
+                  interval={2.5}
+                  onIndexChange={(index) => {
+                    setDirection(index === 0 ? -1 : 1);
+                  }}
+                  variants={{
+                    initial: {
+                      y: -direction * 20,
+                      rotateX: -direction * 90,
+                      opacity: 0,
+                      filter: "blur(4px)",
+                    },
+                    animate: {
+                      y: 0,
+                      rotateX: 0,
+                      opacity: 1,
+                      filter: "blur(0px)",
+                    },
+                    exit: {
+                      y: -direction * 20,
+                      rotateX: -direction * 90,
+                      opacity: 0,
+                      filter: "blur(4px)",
+                    },
+                  }}
+                >
+                  <span>Best For Ideas</span>
+                  <span>Build Better</span>
+                </TextLoop>
                 <p className="mt-8 text-pretty text-lg text-muted-foreground">
                   IdeaDrop is a place to share ideas, explore new perspectives,
                   and turn thoughts into action. Post your ideas, get feedback,
                   and move from concept to execution faster.
                 </p>
-
                 <div className="mt-12 flex flex-col items-center gap-3 sm:flex-row lg:justify-start">
                   <Button
                     size="lg"

@@ -6,7 +6,8 @@
     "dev": "vite --port 3000",
     "build": "vite build && tsc",
     "preview": "vite preview",
-    "test": "vitest run"
+    "test": "vitest run",
+    "json": "json-server src/db/db.json --port 8000"
   },
   "dependencies": {
     "@base-ui/react": "^1.0.0",
@@ -42,6 +43,7 @@
     "@vitejs/plugin-react": "^5.0.4",
     "babel-plugin-react-compiler": "^1.0.0",
     "jsdom": "^27.0.0",
+    "json-server": "1.0.0-beta.3",
     "typescript": "^5.7.2",
     "vite": "^7.1.7",
     "vitest": "^3.0.5",
