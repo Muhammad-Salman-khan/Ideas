@@ -10,13 +10,14 @@ export default function HeroSection() {
             <div className="relative mx-auto flex max-w-6xl flex-col gap-16 px-6 lg:flex-row lg:items-center">
               {/* LEFT: TEXT */}
               <div className="max-w-lg text-center lg:w-1/2 lg:text-left">
-                <h1 className="mt-8 text-balance text-5xl font-medium md:text-6xl xl:text-7xl">
-                  Ship 10x Faster with IdeaDrop
+                <h1 className="mt-8 text-balance text-5xl font-extrabold md:text-6xl xl:text-7xl">
+                  Post once. Build smarter
                 </h1>
 
                 <p className="mt-8 text-pretty text-lg text-muted-foreground">
-                  Highly customizable components for building modern websites
-                  and applications that look and feel the way you mean it.
+                  IdeaDrop is a place to share ideas, explore new perspectives,
+                  and turn thoughts into action. Post your ideas, get feedback,
+                  and move from concept to execution faster.
                 </p>
 
                 <div className="mt-12 flex flex-col items-center gap-3 sm:flex-row lg:justify-start">
@@ -32,11 +33,11 @@ export default function HeroSection() {
                   <Button
                     size="lg"
                     variant="ghost"
-                    className="px-6 text-base"
+                    className="px-6 text-base border-2 border-black"
                     render={<Link to="/" />}
                     nativeButton={false}
                   >
-                    Request a demo
+                    See More
                   </Button>
                 </div>
               </div>
@@ -50,10 +51,10 @@ export default function HeroSection() {
                     className="
                     h-full
                     w-max
+                    // dark:invert-100
                     object-cover
                     rounded-full
-                    dark:invert-0
-                  "
+       "
                   />
                 </div>
               </div>

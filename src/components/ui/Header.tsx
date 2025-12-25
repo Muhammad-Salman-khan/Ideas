@@ -44,11 +44,11 @@ export const Header = () => {
                 className="group flex items-center gap-3 transition-all"
               >
                 {/* Logo */}
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 shadow-sm transition-transform duration-200 group-hover:scale-105">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-linear-to-br  shadow-sm transition-transform duration-200 group-hover:scale-105">
                   <img
                     src={Logo}
                     alt="Idea Drop Logo"
-                    className="h-6 w-6 object-contain"
+                    className=" dark:invert-100 object-cover"
                   />
                 </div>
 

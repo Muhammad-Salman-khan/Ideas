@@ -40,7 +40,7 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
   }),
   component: () => (
     <>
-      <div className="min-h-screen  bg-background  text-foreground max-w-screen">
+      <div className="min-h-screen dark bg-background  text-foreground max-w-screen">
         <HeadContent />
         <Header />
         <Outlet />
