@@ -3,7 +3,6 @@ import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/ideas/$ideaid/")({
   component: IdeaPageDetail,
-
   loader: ({ params }) => FetchData(params.ideaid),
 });
 
