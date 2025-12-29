@@ -13,7 +13,7 @@ export default function HeroSection() {
               {/* LEFT: TEXT */}
               <div className="max-w-lg text-center lg:w-1/2 lg:text-left">
                 <h1 className="mt-8 text-balance text-5xl font-extrabold md:text-6xl xl:text-7xl">
-                  Post once.
+                  Drop Ideas
                 </h1>{" "}
                 <TextLoop
                   className="text-primary text-balance text-5xl font-extrabold "
@@ -45,8 +45,8 @@ export default function HeroSection() {
                     },
                   }}
                 >
-                  <span>Best For Ideas</span>
-                  <span>Build Better</span>
+                  <span>Debate Them</span>
+                  <span>Share Ideas</span>
                 </TextLoop>
                 <p className="mt-8 text-pretty text-lg text-muted-foreground">
                   IdeaDrop is a place to share ideas, explore new perspectives,

@@ -79,7 +79,7 @@ export const Header = () => {
                   <li key={index}>
                     <Link
                       to={item.href}
-                      className="text-muted-foreground hover:text-accent-foreground block duration-150"
+                      className="text-muted-foreground font-bold hover:text-accent-foreground block duration-150"
                     >
                       <span>{item.name}</span>
                     </Link>
@@ -117,15 +117,15 @@ export const Header = () => {
                   variant="default"
                   size="sm"
                   className={cn(
-                    isScrolled && "bg-primary text-primary-foreground "
+                    isScrolled && "bg-primary text-primary-foreground font-bold"
                   )}
                 >
-                  <Link to="/">
+                  <Link className="font-bold" to="/">
                     <span>Login</span>
                   </Link>
                 </Button>
-                <Button size="sm" className={cn(isScrolled && "")}>
-                  <Link to="/">
+                <Button size="sm" className={cn(isScrolled)}>
+                  <Link className="font-bold" to="/">
                     <span>Sign Up</span>
                   </Link>
                 </Button>

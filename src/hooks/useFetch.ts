@@ -1,10 +1,12 @@
-export const FetchData = async (e: string | number) => {
+import Api from "@/lib/axios";
+import type { Data } from "@/Type";
+
+export const FetchData = async (e: string | number): Promise<Data> => {
   try {
-    const res = await fetch(`${import.meta.env.VITE_GET_DATA_API}/${e}`);
-    if (!res.ok) throw new Error("");
-    const data = await res.json();
-    return data;
+    const res = await Api.get(`/ideas/${e}`);
+    return res.data;
   } catch (error: any) {
     console.error(error);
+    throw new Error(error);
   }
 };
