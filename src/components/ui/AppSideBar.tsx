@@ -42,7 +42,7 @@ const items = [
 
 export function AppSideBar() {
   return (
-    <Sidebar>
+    <Sidebar variant="sidebar" collapsible="icon">
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel>Application</SidebarGroupLabel>
