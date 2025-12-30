@@ -54,24 +54,21 @@ export default function HeroSection() {
                   and move from concept to execution faster.
                 </p>
                 <div className="mt-12 flex flex-col items-center gap-3 sm:flex-row lg:justify-start">
-                  <Button
-                    size="lg"
-                    className="px-6 text-base"
-                    render={<Link to="/ideas/new" />}
-                    nativeButton={false}
-                  >
-                    Start Building
-                  </Button>
+                  <Link to="/ideas">
+                    <Button size="lg" className="px-6 text-base">
+                      Start Building
+                    </Button>
+                  </Link>
 
-                  <Button
-                    size="lg"
-                    variant="ghost"
-                    className="px-6 text-base border-2 dark:border-white border-black"
-                    render={<Link to="/" />}
-                    nativeButton={false}
-                  >
-                    See More
-                  </Button>
+                  <Link to="/">
+                    <Button
+                      size="lg"
+                      variant="ghost"
+                      className="px-6 text-base border-2 dark:border-white border-black"
+                    >
+                      Get Started
+                    </Button>
+                  </Link>
                 </div>
               </div>
 

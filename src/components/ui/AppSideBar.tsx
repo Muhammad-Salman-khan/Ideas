@@ -3,6 +3,7 @@ import {
   ChevronUp,
   Home,
   Inbox,
+  LayoutDashboard,
   Search,
   Settings,
   User2,
@@ -15,9 +16,12 @@ import {
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
+  SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  SidebarSeparator,
+  SidebarTrigger,
 } from "@/components/ui/sidebar";
 import {
   DropdownMenu,
@@ -25,32 +29,34 @@ import {
   DropdownMenuItem,
 } from "./dropdown-menu";
 import { DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu";
+import { Avatar, AvatarFallback, AvatarImage } from "./avatar";
+import { Link } from "@tanstack/react-router";
 
 // Menu items.
 const items = [
   {
     title: "Home",
-    url: "#",
+    to: "/ideas",
     icon: Home,
   },
   {
     title: "Inbox",
-    url: "#",
+    to: "#",
     icon: Inbox,
   },
   {
     title: "Calendar",
-    url: "#",
+    to: "#",
     icon: Calendar,
   },
   {
     title: "Search",
-    url: "#",
+    to: "#",
     icon: Search,
   },
   {
     title: "Settings",
-    url: "#",
+    to: "#",
     icon: Settings,
   },
 ];
@@ -58,18 +64,46 @@ const items = [
 export function AppSideBar() {
   return (
     <Sidebar variant="sidebar" collapsible="icon">
+      <SidebarHeader>
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <div className="flex items-center gap-2 px-2 py-1">
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg  text-sidebar-primary-foreground">
+                <Link to="/">
+                  <Avatar>
+                    <AvatarImage
+                      className="dark:invert-100"
+                      src="/public/favicon.png"
+                    />
+                    <AvatarFallback>Idea Drop</AvatarFallback>
+                  </Avatar>
+                </Link>
+              </div>
+              <Link to="/">
+                <span className="font-bold tracking-tight group-data-[collapsible=icon]:hidden">
+                  IDEA
+                </span>
+                <span className="font-bold text-primary tracking-tight group-data-[collapsible=icon]:hidden">
+                  Drop
+                </span>
+              </Link>
+            </div>
+          </SidebarMenuItem>
+        </SidebarMenu>
+        <SidebarSeparator />
+      </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Application</SidebarGroupLabel>
+          <SidebarGroupLabel></SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
-                    <a href={item.url}>
+                    <Link to={item.to}>
                       <item.icon />
-                      <span>{item.title}</span>
-                    </a>
+                      <span className="font-bold">{item.title}</span>
+                    </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
@@ -83,7 +117,11 @@ export function AppSideBar() {
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <SidebarMenuButton>
-                  <User2 /> Username
+                  <Avatar>
+                    <AvatarImage src="https://github.com/shadcn.png" />
+                    <AvatarFallback>CN</AvatarFallback>
+                  </Avatar>
+                  <span>User</span>
                   <ChevronUp className="ml-auto" />
                 </SidebarMenuButton>
               </DropdownMenuTrigger>

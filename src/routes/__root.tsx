@@ -48,25 +48,8 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
     <>
       <div className="min-h-screen bg-background text-foreground">
         <HeadContent />
-
-        <SidebarProvider>
-          <div className="flex w-full">
-            <AppSideBar />
-            <SidebarInset className="flex-1">
-              <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
-                <SidebarTrigger />
-                <Header />
-              </header>
-
-              <main className="flex-1 p-4 overflow-auto">
-                <Outlet />
-              </main>
-            </SidebarInset>
-          </div>
-
-          <Toaster expand={true} richColors position="top-center" />
-        </SidebarProvider>
-
+        <Outlet />
+        <Toaster expand={true} richColors position="top-center" />
         <TanStackDevtools
           config={{
             position: "bottom-right",
