@@ -1,7 +1,6 @@
+import { Button } from "@/components/button";
 import { cn } from "@/lib/utils";
-import React from "react";
 import { ArrowDown, ArrowUp } from "lucide-react";
-import { Button } from "./button";
 type VoteControll = {
   id: number | string;
   direction?: "up" | "down" | null;

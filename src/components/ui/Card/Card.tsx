@@ -9,7 +9,7 @@ import {
 import { Button } from "../../button";
 import { Link } from "@tanstack/react-router";
 import { Badge, BadgeButton } from "../../badge";
-import VoteButton from "@/components/VoteButton";
+import VoteButton from "../VoteButton/VoteButton";
 
 const Card = ({ Data }: { Data: Data }) => {
   const { id, title, summary, createdAt, description, tags } = Data;

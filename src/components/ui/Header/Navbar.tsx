@@ -1,17 +1,14 @@
 import { Button } from "../../button";
 import { Separator } from "../../separator";
 import { SidebarTrigger } from "../../sidebar";
-import { Moon, Sun } from "lucide-react";
-
 import { useState } from "react";
 import { useEffect } from "react";
-import { useTheme } from "@/Contexts/ThemeContext";
 import NavUser from "../User/NavUser";
 import SearchInput from "../Search/SearchInput";
 import CommandBox from "../Search/CommandBox";
+import ThemeSwitch from "../ThemeSwitch/ThemeSwitch";
 
 const Navbar = () => {
-  const { Theme, switchTheme }: any = useTheme();
   const [Open, setOpen] = useState<boolean>(false);
   const [value, setValue] = useState<string>("");
   useEffect(() => {
@@ -34,9 +31,7 @@ const Navbar = () => {
         <SearchInput Value={value} ChangeValue={setOpen} SetValue={setValue} />
 
         <div className="flex items-center md:gap-2 ">
-          <Button variant="ghost" size="sm" onClick={() => switchTheme()}>
-            {Theme === "dark" ? <Sun /> : <Moon />}
-          </Button>
+          <ThemeSwitch />
           <Button className="">Post Idea</Button>
           <NavUser />
         </div>
