@@ -12,12 +12,8 @@ import { Header } from "../components/ui/Header";
 import TanStackQueryDevtools from "../integrations/tanstack-query/devtools";
 
 import type { QueryClient } from "@tanstack/react-query";
-import {
-  SidebarInset,
-  SidebarProvider,
-  SidebarTrigger,
-} from "@/components/ui/sidebar";
-import { AppSideBar } from "@/components/ui/AppSideBar";
+
+import NotFound from "@/components/ui/NotFound";
 
 interface MyRouterContext {
   queryClient: QueryClient;
@@ -65,4 +61,20 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
       </div>
     </>
   ),
+  notFoundComponent: () => {
+    return (
+      <>
+        <Header />
+        <NotFound />
+      </>
+    );
+  },
+  errorComponent: () => {
+    return (
+      <>
+        <Header />
+        <NotFound />
+      </>
+    );
+  },
 });

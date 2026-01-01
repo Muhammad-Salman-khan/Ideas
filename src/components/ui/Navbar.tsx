@@ -39,7 +39,7 @@ const Navbar = () => {
   }, []);
   return (
     <header className="flex  shrink-0 items-center gap-2 border-b transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-(--header-height)">
-      <div className="flex w-full items-center gap-1 p-3 lg:gap-2 lg:px-6">
+      <div className="flex w-full items-center gap-1 p-3 lg:gap-2 lg:px-2">
         <SidebarTrigger className="-ml-4" />
         <Separator
           orientation="vertical"
@@ -57,7 +57,7 @@ const Navbar = () => {
             </InputGroupAddon>
             <InputGroupAddon align="inline-end">
               <Kbd>⌘</Kbd>
-              <Kbd>K</Kbd> {/* Changed from "z" to "K" */}
+              <Kbd>K</Kbd>
             </InputGroupAddon>
           </InputGroup>
         </div>
@@ -66,7 +66,7 @@ const Navbar = () => {
           <Button variant="ghost" size="sm" onClick={() => switchTheme()}>
             {Theme === "dark" ? <Sun /> : <Moon />}
           </Button>
-          <Button>Post Idea</Button>
+          <Button className="">Post Idea</Button>
           <NavUser />
         </div>
       </div>
