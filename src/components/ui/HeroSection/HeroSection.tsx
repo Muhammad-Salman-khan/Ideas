@@ -74,7 +74,7 @@ export default function HeroSection() {
               <div className="relative mx-auto flex w-full justify-center lg:w-1/2">
                 <div className="relative aspect-square w-56 sm:w-72 lg:w-96">
                   <img
-                    src="/public/favicon.png"
+                    src="/favicon.png"
                     alt="Idea Drop Logo"
                     className="
                     h-full
