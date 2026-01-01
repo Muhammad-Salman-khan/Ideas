@@ -9,6 +9,7 @@ import {
 import { Button } from "./button";
 import { Link } from "@tanstack/react-router";
 import { Badge, BadgeButton } from "./badge";
+import VoteButton from "./VoteButton";
 
 const Card = ({ Data }: { Data: Data }) => {
   const { id, title, summary, createdAt, description, tags } = Data;
@@ -16,7 +17,7 @@ const Card = ({ Data }: { Data: Data }) => {
     <>
       <div className="max-w-4xl w-full m-3 card border rounded-3xl overflow-hidden shadow-2xl transition-all duration-300 hover:border-slate-700">
         {/* Header */}
-        <Link key={id} to={`${id}`}>
+        <Link key={id} to={`/ideas/$ideaid`} params={{ ideaid: id }}>
           <div className="p-6 pb-4">
             <div className="flex items-start justify-between">
               <div className="flex items-center space-x-3">
@@ -94,19 +95,15 @@ const Card = ({ Data }: { Data: Data }) => {
         <div className="px-6 pb-6 pt-2">
           <div className="h-px bg-slate-800 mb-6" />
           <div className="flex items-center justify-between">
-            <div className="flex items-center bg-[#1e293b]/50 rounded-xl p-1 border border-slate-800">
-              <div className="p-2 rounded-lg text-slate-400">
-                <ArrowUp size={18} />
-              </div>
-              <span className="px-3 text-slate-200 font-bold text-sm min-w-[3rem] text-center">
-                1.2k
-              </span>
-              <div className="w-[1px] h-4 bg-slate-700" />
-              <div className="p-2 rounded-lg text-slate-400">
-                <ArrowDown size={18} />
-              </div>
-            </div>
-            <Link to={`${id}`}>
+            {/* butt */}
+            <VoteButton
+              id={id}
+              direction={"up"}
+              count="1.2k"
+              onUpvote={() => console.log("up")}
+              onDownvote={() => console.log("down")}
+            />
+            <Link to={`/ideas/$ideaid`} params={{ ideaid: id }}>
               <div className="flex items-center space-x-1 sm:space-x-4">
                 <button className="flex items-center space-x-2 text-slate-400 hover:text-white transition-colors px-3 py-2 rounded-xl hover:bg-slate-800/50">
                   <MessageSquare size={18} />

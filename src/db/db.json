@@ -3,50 +3,82 @@
     {
       "id": "1",
       "title": "Airbnb for Garages",
-      "summary": "Rent out your garage for storage or parking.",
-      "description": "This platform allows homeowners to monetize unused garage space by offering it for short- or long-term storage, parking, or even micro-offices. Think Airbnb, but for underutilized residential garages. It could also provide insurance, keyless access, and a rating system for trust and safety.",
+      "summary": "Monetize unused garage space for storage, parking, or work.",
+      "description": "In many cities, garage space sits unused while people struggle to find affordable parking or storage. This idea proposes a peer-to-peer marketplace where homeowners can rent out their garages for multiple use cases: car parking, bike storage, seasonal storage, or even compact workspaces for creators. The platform would handle trust issues through identity verification, insurance coverage, smart-lock access, and user ratings. Over time, it could integrate city zoning rules, dynamic pricing based on demand, and partnerships with logistics companies. The goal is to turn wasted residential space into a flexible, income-generating asset while easing urban congestion.",
       "tags": ["real estate", "marketplace", "sharing economy"],
       "createdAt": "2025-04-27T10:00:00.000Z"
     },
     {
       "id": "2",
       "title": "Local Farm Box Subscription",
-      "summary": "Weekly produce delivery from nearby farms.",
-      "description": "A subscription box service connecting local farmers with urban dwellers looking for fresh produce. Customers receive a curated box each week containing fruits, vegetables, and artisanal goods sourced directly from nearby growers. It encourages local commerce, healthy eating, and seasonal variety.",
+      "summary": "Farm-fresh produce delivered weekly from nearby growers.",
+      "description": "Modern food systems often disconnect people from where their food comes from, while local farmers struggle with unpredictable income. This subscription service directly links nearby farms with urban households through weekly or bi-weekly produce boxes. Customers receive seasonal, fresh food, while farmers gain stable demand and fair pricing. The platform could include farm stories, sustainability metrics, customizable boxes, and flexible delivery schedules. Long-term, it becomes not just a logistics service, but a trust-based local food network that strengthens regional agriculture.",
       "tags": ["subscription", "local", "marketplace"],
       "createdAt": "2025-04-28T14:30:00.000Z"
     },
     {
       "id": "3",
       "title": "Micro-SaaS for Freelancers",
-      "summary": "A personal dashboard to manage freelance work.",
-      "description": "A lightweight SaaS platform that helps freelancers track their clients, invoices, contracts, and income in one place. Built specifically for solopreneurs who don’t need bulky CRM tools but want visibility into their business and finances. Includes tax estimates, recurring invoice reminders, and expense logging.",
+      "summary": "One clean dashboard for freelance business management.",
+      "description": "Freelancers often juggle invoices, clients, contracts, and taxes using scattered tools or spreadsheets. This Micro-SaaS focuses on clarity rather than feature overload. It gives freelancers a single dashboard to track income, manage contracts, send invoices, estimate taxes, and monitor expenses. Instead of behaving like a bloated CRM, it stays lightweight and opinionated. Over time, it could introduce automation for reminders, regional tax rules, and income forecasting—helping freelancers think like business owners, not just workers.",
       "tags": ["freelance", "saas", "tools"],
       "createdAt": "2025-04-29T09:15:00.000Z"
     },
     {
       "id": "4",
       "title": "Virtual Closet Organizer",
-      "summary": "Your wardrobe, digitized and AI-personalized.",
-      "description": "An app that lets users take pictures of their clothes and upload them into a virtual closet. The app uses AI to suggest daily outfits based on the weather, calendar events, and style preferences. Features might include travel packing lists, outfit tracking, and a sharing option for friends to browse each other's closets.",
+      "summary": "AI-powered outfit planning from your existing wardrobe.",
+      "description": "People often feel they have nothing to wear despite owning plenty of clothes. This app digitizes a user’s wardrobe and uses AI to suggest outfits based on weather, calendar events, and personal preferences. Beyond convenience, it promotes conscious consumption by maximizing existing clothing instead of encouraging constant purchases. Future features could include style analytics, travel packing optimization, and sustainability insights showing how often items are reused. It transforms fashion from impulse-driven to intentional.",
       "tags": ["fashion", "ai", "productivity"],
       "createdAt": "2025-04-25T16:45:00.000Z"
     },
     {
       "id": "5",
       "title": "Pet Sitter Marketplace",
-      "summary": "Book trusted sitters and walkers in your area.",
-      "description": "A two-sided platform where pet owners can find, book, and review local pet sitters and dog walkers. All providers go through background checks and can create profiles with availability, pricing, and services offered. Includes messaging, GPS walk tracking, and emergency contact sharing.",
+      "summary": "Find and book trusted local pet care.",
+      "description": "Pet owners often struggle to find reliable care when traveling or working long hours. This marketplace connects them with verified local sitters and walkers, emphasizing trust and transparency. Each provider undergoes background checks and builds a public profile with reviews, availability, and pricing. Features like GPS walk tracking, real-time updates, and emergency contacts reduce anxiety for owners. Over time, it becomes a reputation-driven ecosystem for professional pet care.",
       "tags": ["pets", "marketplace", "local"],
       "createdAt": "2025-04-26T11:20:00.000Z"
     },
     {
       "id": "6",
       "title": "Remote Job Recommender",
-      "summary": "Smart job matches using your online presence.",
-      "description": "An AI-powered platform that analyzes your GitHub, LinkedIn, resume, and public portfolios to find remote jobs that align with your skills and goals. Users receive a daily or weekly feed of tailored listings, and the system learns from their clicks and applications to improve recommendations over time.",
+      "summary": "Personalized remote jobs matched to your real skills.",
+      "description": "Job boards overwhelm users with irrelevant listings and low-quality roles. This AI-driven platform analyzes a user’s public professional footprint—such as GitHub, portfolios, or resumes—to recommend remote jobs that actually match their skills and trajectory. Instead of keyword spam, it prioritizes role fit, growth potential, and company credibility. Over time, the system learns from user behavior and improves recommendations, acting more like a career assistant than a job board.",
       "tags": ["jobs", "remote", "ai"],
       "createdAt": "2025-04-24T13:10:00.000Z"
+    },
+    {
+      "id": "7",
+      "title": "Idea Validation Platform",
+      "summary": "Test startup ideas before wasting months building them.",
+      "description": "Many founders build products in isolation, only to discover there was no real demand. This platform allows users to post startup ideas and receive structured feedback from builders, operators, and domain experts. Instead of shallow likes, ideas are evaluated on feasibility, market size, originality, and execution difficulty. Over time, strong ideas surface while weak ones are refined or discarded early, saving founders time and energy.",
+      "tags": ["startups", "validation", "community"],
+      "createdAt": "2025-04-30T09:00:00.000Z"
+    },
+    {
+      "id": "8",
+      "title": "Skill Swap Network",
+      "summary": "Trade skills instead of money.",
+      "description": "Not everyone has money, but everyone has skills. This network enables users to exchange services directly—design for development, writing for marketing—using time-based credits to ensure fairness. It lowers barriers to learning, collaboration, and entrepreneurship. Over time, reputation systems and skill verification could turn it into a parallel economy built on mutual value rather than cash.",
+      "tags": ["learning", "community", "marketplace"],
+      "createdAt": "2025-04-30T10:30:00.000Z"
+    },
+    {
+      "id": "9",
+      "title": "Digital Legacy Manager",
+      "summary": "Control what happens to your digital life after death.",
+      "description": "As more of life moves online, digital assets are often left unmanaged after death. This service allows users to define how their accounts, files, and messages are handled if they pass away. Trusted contacts receive controlled access based on predefined rules. It bridges the gap between modern digital life and traditional estate planning, giving people peace of mind about their online presence.",
+      "tags": ["privacy", "security", "legal"],
+      "createdAt": "2025-04-30T11:45:00.000Z"
+    },
+    {
+      "id": "10",
+      "title": "AI Meeting Summarizer",
+      "summary": "Turn meetings into clear action items automatically.",
+      "description": "Meetings often consume time without producing clarity. This tool records and transcribes meetings, then extracts decisions, tasks, and summaries automatically. It integrates with project management tools so outcomes don’t disappear into chat logs. The long-term vision is fewer meetings, better documentation, and clearer accountability across teams.clarity. This tool records and transcribes meetings, then extracts decisions, tasks, and summaries automatically. It integrates with project management tools so outcomes don’t disappear into chat logs. The long-term vision is fewer meetings, better documentation, and clearer accountability across teams.",
+      "tags": ["ai", "productivity", "work"],
+      "createdAt": "2025-04-30T13:00:00.000Z"
     }
   ]
 }
