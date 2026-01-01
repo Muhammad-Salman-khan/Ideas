@@ -1,70 +1,66 @@
+import { useState } from "react";
 import type { Data } from "@/Type";
-import {
-  MoreHorizontal,
-  ArrowUp,
-  ArrowDown,
-  MessageSquare,
-  Share2,
-} from "lucide-react";
-import { Button } from "../../button";
+import { MoreHorizontal, MessageSquare, Share2 } from "lucide-react";
 import { Link } from "@tanstack/react-router";
-import { Badge, BadgeButton } from "../../badge";
+import { Badge } from "../../badge";
 import VoteButton from "../VoteButton/VoteButton";
+import NavUser from "../User/NavUser";
+import { MenubarDemo } from "../Menu/Menu";
 
 const Card = ({ Data }: { Data: Data }) => {
-  const { id, title, summary, createdAt, description, tags } = Data;
+  const { id, title, summary, createdAt, tags } = Data;
+
+  const [Open, setOpen] = useState<boolean>(false);
   return (
     <>
-      <div className="max-w-4xl w-full m-3 card border rounded-3xl overflow-hidden shadow-2xl transition-all duration-300 hover:border-slate-700">
-        <Link key={id} to={`/ideas/$ideaid`} params={{ ideaid: id }}>
-          <div className="p-6 pb-4">
-            <div className="flex items-start justify-between">
-              <div className="flex items-center space-x-3">
-                <div className="relative">
-                  <img
-                    src="https://picsum.photos/id/64/64/64"
-                    alt="Alex Innovator"
-                    className="w-10 h-10 rounded-full border-2 border-slate-700 object-cover"
-                  />
+      <div
+        key={id}
+        className="max-w-4xl w-full m-3 card border rounded-3xl overflow-hidden shadow-2xl transition-all duration-300 hover:border-slate-700"
+      >
+        <div className="p-6 pb-4">
+          <div className="flex items-start justify-between">
+            <div className="flex items-center space-x-3">
+              <div className="relative">
+                <img
+                  src="https://picsum.photos/id/64/64/64"
+                  alt="Alex Innovator"
+                  className="w-10 h-10 rounded-full border-2 border-slate-700 object-cover"
+                />
+              </div>
+              <div>
+                <div className="flex items-center space-x-2">
+                  <h3 className="text-foreground font-semibold text-base">
+                    Alex Innovator
+                  </h3>
+                  <span className="text-foreground text-xs font-medium">
+                    {new Intl.DateTimeFormat("en-US", {
+                      weekday: "short",
+                      day: "2-digit",
+                      month: "short",
+                      year: "2-digit",
+                      hour: "numeric",
+                    }).format(new Date(createdAt))}
+                  </span>
                 </div>
-                <div>
-                  <div className="flex items-center space-x-2">
-                    <h3 className="text-foreground font-semibold text-base">
-                      Alex Innovator
-                    </h3>
-                    <span className="text-slate-500 text-xs">•</span>
-                    <span className="text-slate-500 text-xs font-medium">
-                      {new Intl.DateTimeFormat("en-US", {
-                        weekday: "short",
-                        day: "numeric",
-                        month: "numeric",
-                        year: "numeric",
-                        hour: "numeric",
-                      }).format(new Date(createdAt))}
-                    </span>
-                  </div>
-                  <div className="text-blue-500 font-bold text-[10px] tracking-wider uppercase mt-0.5">
-                    #ID-1024
-                  </div>
+                <div className="text-blue-500 font-bold text-[10px] tracking-wider uppercase mt-0.5">
+                  #ID-1024
                 </div>
               </div>
-              <button className="text-slate-400 hover:text-white transition-colors p-1 rounded-full hover:bg-slate-800">
-                <MoreHorizontal size={20} />
-              </button>
             </div>
-
-            {/* Content Section */}
-            <div className="mt-5 space-y-3">
-              <h2 className="text-foreground text-2xl font-bold leading-tight">
-                {title}
-              </h2>
-              <p className="text-foreground text-sm leading-relaxed font-medium">
-                {summary}
-              </p>
-            </div>
+            <MenubarDemo id={id} />
           </div>
 
-          {/* Featured Image */}
+          <div className="mt-5 space-y-3">
+            <h2 className="text-foreground text-2xl font-bold leading-tight">
+              {title}
+            </h2>
+            <p className="text-foreground text-sm leading-relaxed font-medium">
+              {summary}
+            </p>
+          </div>
+        </div>
+
+        <Link to={`/ideas/$ideaid`} params={{ ideaid: id }}>
           <div className="px-6 relative">
             <div className="relative aspect-video overflow-hidden rounded-2xl border border-slate-800/50">
               <img

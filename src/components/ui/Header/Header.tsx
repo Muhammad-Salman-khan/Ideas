@@ -9,6 +9,7 @@ import { Moon, Sun } from "lucide-react";
 
 const menuItems = [
   { name: "Home", href: "/" },
+  { name: "Get Started", href: "/ideas/" },
   { name: "About", href: "/about" },
 ];
 export const Header = () => {
