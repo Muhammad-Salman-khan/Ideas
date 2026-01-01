@@ -16,7 +16,6 @@ const Card = ({ Data }: { Data: Data }) => {
   return (
     <>
       <div className="max-w-4xl w-full m-3 card border rounded-3xl overflow-hidden shadow-2xl transition-all duration-300 hover:border-slate-700">
-        {/* Header */}
         <Link key={id} to={`/ideas/$ideaid`} params={{ ideaid: id }}>
           <div className="p-6 pb-4">
             <div className="flex items-start justify-between">
