@@ -22,17 +22,17 @@ import {
   SidebarMenuItem,
   SidebarSeparator,
   SidebarTrigger,
-} from "@/components/ui/sidebar";
+} from "@/components/sidebar";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-} from "./dropdown-menu";
+} from "../../dropdown-menu";
 import { DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu";
-import { Avatar, AvatarFallback, AvatarImage } from "./avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "../../avatar";
 import { Link } from "@tanstack/react-router";
-import NavUser from "./NavUser";
-import LogoSide from "./LogoSide";
+import NavUser from "../User/NavUser";
+import LogoSide from "../../LogoSide";
 
 // Menu items.
 const items = [

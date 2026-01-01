@@ -1,6 +1,6 @@
 import { Bookmark, Share2 } from "lucide-react";
-import { Avatar, AvatarFallback, AvatarImage } from "./avatar";
-import { Button } from "./button";
+import { Avatar, AvatarFallback, AvatarImage } from "../../avatar";
+import { Button } from "../../button";
 
 const DetailAuthor = ({ CreatedAt }: { CreatedAt: string }) => {
   return (

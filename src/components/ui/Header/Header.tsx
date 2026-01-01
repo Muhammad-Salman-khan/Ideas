@@ -1,6 +1,6 @@
-import Logo from "../../../public/favicon.png";
+// import Logo from "../../../public/favicon.png";
 import { Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/button";
 import React from "react";
 import { cn } from "@/lib/utils";
 import { Link } from "@tanstack/react-router";
@@ -8,9 +8,7 @@ import { useTheme } from "@/Contexts/ThemeContext";
 import { Moon, Sun } from "lucide-react";
 
 const menuItems = [
-  { name: "Features", href: "#link" },
-  { name: "Solution", href: "#link" },
-  { name: "Pricing", href: "#link" },
+  { name: "Home", href: "/" },
   { name: "About", href: "/about" },
 ];
 export const Header = () => {
@@ -48,7 +46,7 @@ export const Header = () => {
                 {/* Logo */}
                 <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-linear-to-br  shadow-sm transition-transform duration-200 group-hover:scale-105">
                   <img
-                    src={Logo}
+                    src="/public/favicon.png"
                     alt="Idea Drop Logo"
                     className=" dark:invert-100 object-cover"
                   />
@@ -74,7 +72,7 @@ export const Header = () => {
             </div>
 
             <div className="absolute inset-0 m-auto hidden size-fit lg:block">
-              <ul className="flex gap-8 text-sm">
+              <ul className="flex gap-3 text-sm">
                 {menuItems.map((item, index) => (
                   <li key={index}>
                     <Link

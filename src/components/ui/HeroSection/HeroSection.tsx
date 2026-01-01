@@ -1,8 +1,6 @@
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/button";
 import { Link } from "@tanstack/react-router";
-import Logo from "../../../public/favicon.png";
-import { useState } from "react";
-import { TextLoop } from "./text-loop";
+import { TextLoop } from "../../text-loop";
 export default function HeroSection() {
   return (
     <>
@@ -76,7 +74,7 @@ export default function HeroSection() {
               <div className="relative mx-auto flex w-full justify-center lg:w-1/2">
                 <div className="relative aspect-square w-56 sm:w-72 lg:w-96">
                   <img
-                    src={Logo}
+                    src="/public/favicon.png"
                     alt="Idea Drop Logo"
                     className="
                     h-full

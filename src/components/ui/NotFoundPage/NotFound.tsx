@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { animate } from "animejs";
 import { Link } from "@tanstack/react-router";
-import { Button } from "./button";
+import { Button } from "../../button";
 const NotFound = () => {
   useEffect(() => {
     const svgEl = document.querySelector(".row svg");

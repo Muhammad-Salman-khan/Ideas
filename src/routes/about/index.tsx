@@ -1,3 +1,5 @@
+import { Header } from "@/components/ui/Header/Header";
+import Navbar from "@/components/ui/Header/Navbar";
 import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/about/")({
@@ -7,7 +9,8 @@ export const Route = createFileRoute("/about/")({
 function RouteComponent() {
   return (
     <>
-      <div>Hello "/aboutPage/aboutpage"!</div>
+      <Header />
+      about
     </>
   );
 }

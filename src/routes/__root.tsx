@@ -7,13 +7,13 @@ import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import { Toaster } from "sonner";
 import { TanStackDevtools } from "@tanstack/react-devtools";
 
-import { Header } from "../components/ui/Header";
+import { Header } from "../components/ui/Header/Header";
 
 import TanStackQueryDevtools from "../integrations/tanstack-query/devtools";
 
 import type { QueryClient } from "@tanstack/react-query";
 
-import NotFound from "@/components/ui/NotFound";
+import NotFound from "@/components/ui/NotFoundPage/NotFound";
 
 interface MyRouterContext {
   queryClient: QueryClient;

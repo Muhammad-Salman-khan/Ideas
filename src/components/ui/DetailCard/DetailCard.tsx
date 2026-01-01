@@ -1,5 +1,5 @@
 import type { Data } from "@/Type";
-import { Button } from "./button";
+import { Button } from "../../button";
 import DetailAuthor from "./DetailAuthor";
 import DetailCardContent from "./DetailCardContent";
 import DetailCardSummary from "./DetailCardSummary";

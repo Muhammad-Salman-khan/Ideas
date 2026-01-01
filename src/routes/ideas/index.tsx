@@ -1,4 +1,4 @@
-import Card from "@/components/ui/Card";
+import Card from "@/components/ui/Card/Card";
 import { FetchIdeas } from "@/hooks/useFetch";
 import type { Data } from "@/Type";
 import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";

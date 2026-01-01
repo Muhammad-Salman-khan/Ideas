@@ -1,11 +1,11 @@
-import { AppSideBar } from "@/components/ui/AppSideBar";
-import { Button } from "@/components/ui/button";
-import Navbar from "@/components/ui/Navbar";
+import { AppSideBar } from "@/components/ui/Sidebar/AppSideBar";
+import { Button } from "@/components/button";
+import Navbar from "@/components/ui/Header/Navbar";
 import {
   SidebarInset,
   SidebarProvider,
   SidebarTrigger,
-} from "@/components/ui/sidebar";
+} from "@/components/sidebar";
 import { createFileRoute, Outlet, useCanGoBack } from "@tanstack/react-router";
 import { Toaster } from "sonner";
 

@@ -6,24 +6,22 @@ import {
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
-} from "./dropdown-menu";
+} from "../../dropdown-menu";
 import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
-} from "./sidebar";
-import { Avatar, AvatarFallback, AvatarImage } from "./avatar";
+} from "../../sidebar";
+import { Avatar, AvatarFallback, AvatarImage } from "../../avatar";
 import {
   BadgeCheck,
   Bell,
   ChevronsDown,
-  ChevronsUp,
   CreditCard,
   LogOut,
   Sparkles,
 } from "lucide-react";
-import { useIsMobile } from "@/hooks/use-mobile";
 
 const NavUser = () => {
   const { isMobile } = useSidebar();

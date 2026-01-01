@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import React from "react";
-import { Button } from "./button";
 import { ArrowDown, ArrowUp } from "lucide-react";
+import { Button } from "./button";
 type VoteControll = {
   id: number | string;
   direction?: "up" | "down" | null;
@@ -28,7 +28,7 @@ const VoteButton = ({
       <Button
         size="icon"
         variant="ghost"
-        onClick={onUpvote}
+        onClick={() => onUpvote}
         className={cn(
           "rounded-l-xl transition-all",
           direction === "up" &&
@@ -45,7 +45,7 @@ const VoteButton = ({
       <Button
         size="icon"
         variant="ghost"
-        onClick={onDownvote}
+        onClick={() => onDownvote}
         className={cn(
           "rounded-r-xl transition-all",
           direction === "down" &&

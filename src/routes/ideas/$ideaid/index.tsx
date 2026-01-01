@@ -1,5 +1,5 @@
-import { Button } from "@/components/ui/button";
-import DetailCard from "@/components/ui/DetailCard";
+import { Button } from "@/components/button";
+import DetailCard from "@/components/ui/DetailCard/DetailCard";
 import { FetchData } from "@/hooks/useFetch";
 import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute, Link } from "@tanstack/react-router";
