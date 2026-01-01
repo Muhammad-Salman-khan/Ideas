@@ -1,29 +1,7 @@
 import { DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-} from "./dropdown-menu";
-import {
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  useSidebar,
-} from "./sidebar";
-import { Avatar, AvatarFallback, AvatarImage } from "./avatar";
-import {
-  BadgeCheck,
-  Bell,
-  ChevronsDown,
-  ChevronsUp,
-  CreditCard,
-  LogOut,
-  Sparkles,
-} from "lucide-react";
-import { useIsMobile } from "@/hooks/use-mobile";
+import { DropdownMenu } from "../../dropdown-menu";
+import { SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "../../sidebar";
+import { Avatar, AvatarFallback, AvatarImage } from "../../avatar";
 
 const LogoSide = () => {
   return (

@@ -1,13 +1,4 @@
-import {
-  Calendar,
-  ChevronUp,
-  Home,
-  Inbox,
-  LayoutDashboard,
-  Search,
-  Settings,
-  User2,
-} from "lucide-react";
+import { Calendar, Home, Inbox, Search, Settings } from "lucide-react";
 
 import {
   Sidebar,
@@ -20,19 +11,10 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-  SidebarSeparator,
-  SidebarTrigger,
 } from "@/components/sidebar";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-} from "../../dropdown-menu";
-import { DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu";
-import { Avatar, AvatarFallback, AvatarImage } from "../../avatar";
 import { Link } from "@tanstack/react-router";
 import NavUser from "../User/NavUser";
-import LogoSide from "../../LogoSide";
+import LogoSide from "../Logo/LogoSide";
 
 // Menu items.
 const items = [
