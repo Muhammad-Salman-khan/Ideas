@@ -46,7 +46,7 @@ export const Header = () => {
                 {/* Logo */}
                 <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-linear-to-br  shadow-sm transition-transform duration-200 group-hover:scale-105">
                   <img
-                    src="/public/favicon.png"
+                    src="/favicon.png"
                     alt="Idea Drop Logo"
                     className=" dark:invert-100 object-cover"
                   />
