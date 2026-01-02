@@ -69,12 +69,12 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
       </>
     );
   },
-  errorComponent: () => {
-    return (
-      <>
-        <Header />
-        <NotFound />
-      </>
-    );
-  },
+  // errorComponent: () => {
+  //   return (
+  //     <>
+  //       <Header />
+  //       <NotFound />
+  //     </>
+  //   );
+  // },
 });

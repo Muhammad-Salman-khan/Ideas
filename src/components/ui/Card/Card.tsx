@@ -6,6 +6,7 @@ import { Badge } from "../../badge";
 import VoteButton from "../VoteButton/VoteButton";
 import NavUser from "../User/NavUser";
 import { MenubarDemo } from "../Menu/Menu";
+import { Share } from "../ShareDialog/Share";
 
 const Card = ({ Data }: { Data: Data }) => {
   const { id, title, summary, createdAt, tags } = Data;
@@ -98,17 +99,15 @@ const Card = ({ Data }: { Data: Data }) => {
               onUpvote={() => console.log("up")}
               onDownvote={() => console.log("down")}
             />
-            <Link to={`/ideas/$ideaid`} params={{ ideaid: id }}>
-              <div className="flex items-center space-x-1 sm:space-x-4">
+            <div className="flex items-center space-x-1 sm:space-x-4">
+              <Link to={`/ideas/$ideaid`} params={{ ideaid: id }}>
                 <button className="flex items-center space-x-2 text-slate-400 hover:text-white transition-colors px-3 py-2 rounded-xl hover:bg-slate-800/50">
                   <MessageSquare size={18} />
                   <span className="text-sm font-semibold">45 Critiques</span>
                 </button>
-                <button className="p-2 text-slate-400 hover:text-white transition-all hover:bg-slate-800/50 rounded-xl">
-                  <Share2 size={18} />
-                </button>
-              </div>
-            </Link>
+              </Link>
+              <Share />
+            </div>
           </div>
         </div>
       </div>

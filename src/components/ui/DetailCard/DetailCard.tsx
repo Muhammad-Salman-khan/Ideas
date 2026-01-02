@@ -4,6 +4,9 @@ import DetailAuthor from "./DetailAuthor";
 import DetailCardContent from "./DetailCardContent";
 import DetailCardSummary from "./DetailCardSummary";
 import { Link } from "@tanstack/react-router";
+import VoteButton from "../VoteButton/VoteButton";
+import { Share } from "../ShareDialog/Share";
+import { GitCommitVerticalIcon } from "lucide-react";
 
 const DetailCard = ({ data }: { data: Data }) => {
   const { id, title, summary, tags, description, createdAt } = data;
@@ -45,17 +48,20 @@ const DetailCard = ({ data }: { data: Data }) => {
           </div>
 
           <DetailCardContent Description={description} />
-
           <div className="my-16 h-px bg-border w-full" />
-
-          {/* <VotingCard
-            upvotes={upvotes}
-            downvotes={downvotes}
-            onUpvote={() => {}} // No-op for static version
-            onDownvote={() => {}} // No-op for static version
-          /> */}
-
-          {/* <CritiquesSection initialComments={MOCK_COMMENTS} /> */}
+          <div className="mt-12 flex border-primary border-2 p-3 rounded-lg justify-between align-middle items-center">
+            <VoteButton
+              id={id}
+              direction={"up"}
+              count={"120"}
+              onUpvote={() => {}} // No-op for static version
+              onDownvote={() => {}} // No-op for static version
+            />
+            <div className=" flex justify-between align-middle items-center gap-2.5">
+              <GitCommitVerticalIcon />
+              <Share />
+            </div>
+          </div>
         </main>
       </div>
     </>

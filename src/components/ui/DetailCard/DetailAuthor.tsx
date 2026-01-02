@@ -1,16 +1,19 @@
-import { Bookmark, Share2 } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "../../avatar";
-import { Button } from "../../button";
+import { Share } from "../ShareDialog/Share";
 
 const DetailAuthor = ({ CreatedAt }: { CreatedAt: string }) => {
   return (
     <>
       <div className="flex flex-wrap items-center justify-between gap-6 py-5 border-y border-border">
         <div className="flex items-center gap-3">
-          <div className="w-12 h-12 rounded-full overflow-hidden ring-2 ring-border">
-            <Avatar>
+          <div className="w-12 h-12">
+            <Avatar className="w-full h-full rounded-full overflow-hidden ring-2 ring-border">
+              <AvatarImage
+                src="https://picsum.photos/48"
+                alt="User avatar"
+                className="object-cover w-full h-full"
+              />
               <AvatarFallback>Ac</AvatarFallback>
-              <AvatarImage></AvatarImage>
             </Avatar>
           </div>
           <div>
@@ -21,7 +24,7 @@ const DetailAuthor = ({ CreatedAt }: { CreatedAt: string }) => {
               <span>handle</span>
               <span className="w-1 h-1 rounded-full bg-border" />
               <span>
-                Posted
+                Posted {}
                 {new Intl.DateTimeFormat("en-US", {
                   weekday: "short",
                   day: "numeric",
@@ -35,14 +38,7 @@ const DetailAuthor = ({ CreatedAt }: { CreatedAt: string }) => {
         </div>
 
         <div className="flex items-center gap-3">
-          <button className="flex items-center gap-2 px-5 py-2.5 rounded-lg bg-surface border text-foreground border-border text-sm font-semibold hover:bg-surface/80 transition-colors">
-            <Bookmark className="w-4 h-4" />
-            Save
-          </button>
-          <button className="flex text-foreground items-center gap-2 px-5 py-2.5 rounded-lg bg-surface border border-border text-sm font-semibold hover:bg-surface/80 transition-colors">
-            <Share2 className="w-4 h-4" />
-            Share
-          </button>
+          <Share />
         </div>
       </div>
     </>
