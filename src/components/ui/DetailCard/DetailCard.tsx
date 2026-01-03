@@ -48,8 +48,8 @@ const DetailCard = ({ data }: { data: Data }) => {
           </div>
 
           <DetailCardContent Description={description} />
-          <div className="my-16 h-px bg-border w-full" />
-          <div className="mt-12 flex border-primary border-2 p-3 rounded-lg justify-between align-middle items-center">
+          <div className="my-16 h-px bg-border border-primary w-full" />
+          <div className=" flex border-primary border-2 p-3 rounded-lg justify-between align-middle items-center">
             <VoteButton
               id={id}
               direction={"up"}

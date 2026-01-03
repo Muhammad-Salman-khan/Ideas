@@ -11,7 +11,9 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/dialog";
-import { Share2 } from "lucide-react";
+import { Copy, Share2 } from "lucide-react";
+import { toast } from "sonner";
+import { InputGroup } from "@/components/input-group";
 
 export function Share() {
   return (
@@ -31,15 +33,24 @@ export function Share() {
         </DialogHeader>
         <div className="flex items-center gap-2">
           <div className="grid flex-1 gap-2">
-            <Label htmlFor="link" className="sr-only">
-              Link
-            </Label>
-            <Input id="link" defaultValue={window.location.href} readOnly />
+            <InputGroup>
+              <Label htmlFor="link" className=" sr-only">
+                Link
+              </Label>
+              <Input id="link" defaultValue={location.href} readOnly />
+              <Copy
+                className="w-12"
+                onClick={() => {
+                  window.navigator.clipboard.writeText(location.href);
+                  toast.success("Copied");
+                }}
+              />
+            </InputGroup>
           </div>
         </div>
         <DialogFooter className="sm:justify-start">
           <DialogClose asChild>
-            <Button type="button" variant="secondary">
+            <Button type="button" variant="outline">
               Close
             </Button>
           </DialogClose>

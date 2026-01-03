@@ -45,7 +45,12 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
       <div className="min-h-screen bg-background text-foreground">
         <HeadContent />
         <Outlet />
-        <Toaster expand={true} richColors position="top-center" />
+        <Toaster
+          theme="system"
+          expand={true}
+          richColors
+          position="top-center"
+        />
         <TanStackDevtools
           config={{
             position: "bottom-right",

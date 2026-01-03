@@ -1,17 +1,13 @@
-import { useState } from "react";
 import type { Data } from "@/Type";
-import { MoreHorizontal, MessageSquare, Share2 } from "lucide-react";
+import { MessageSquare } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { Badge } from "../../badge";
 import VoteButton from "../VoteButton/VoteButton";
-import NavUser from "../User/NavUser";
 import { MenubarDemo } from "../Menu/Menu";
 import { Share } from "../ShareDialog/Share";
 
 const Card = ({ Data }: { Data: Data }) => {
   const { id, title, summary, createdAt, tags } = Data;
-
-  const [Open, setOpen] = useState<boolean>(false);
   return (
     <>
       <div
