@@ -1,4 +1,3 @@
-import { Button } from "../../button";
 import { Separator } from "../../separator";
 import { SidebarTrigger } from "../../sidebar";
 import { useState } from "react";
@@ -7,7 +6,8 @@ import NavUser from "../User/NavUser";
 import SearchInput from "../Search/SearchInput";
 import CommandBox from "../Search/CommandBox";
 import ThemeSwitch from "../ThemeSwitch/ThemeSwitch";
-
+import { Link } from "@tanstack/react-router";
+import { Button } from "@/components/button";
 const Navbar = () => {
   const [Open, setOpen] = useState<boolean>(false);
   const [value, setValue] = useState<string>("");
@@ -32,7 +32,9 @@ const Navbar = () => {
 
         <div className="flex items-center md:gap-2 ">
           <ThemeSwitch />
-          <Button className="">Post Idea</Button>
+          <Link to="/ideas/new" className="">
+            <Button>Post Idea</Button>
+          </Link>
           <NavUser />
         </div>
       </div>

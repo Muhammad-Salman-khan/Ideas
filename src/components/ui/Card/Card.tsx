@@ -5,12 +5,21 @@ import { Badge } from "../../badge";
 import VoteButton from "../VoteButton/VoteButton";
 import { MenubarDemo } from "../Menu/Menu";
 import { Share } from "../ShareDialog/Share";
+import { CardHeader, Card } from "@/components/card";
+import { AspectRatio } from "@/components/aspect-ratio";
 
-const Card = ({ Data }: { Data: Data }) => {
+const CardIdeas = ({ Data }: { Data: Data }) => {
   const { id, title, summary, createdAt, tags } = Data;
+  const uploadedAt = new Intl.DateTimeFormat("en-US", {
+    weekday: "short",
+    day: "numeric",
+    month: "numeric",
+    year: "numeric",
+  }).format(new Date(createdAt));
+
   return (
     <>
-      <div
+      <Card
         key={id}
         className="max-w-4xl w-full m-3 card border rounded-3xl overflow-hidden shadow-2xl transition-all duration-300 hover:border-slate-700"
       >
@@ -26,17 +35,11 @@ const Card = ({ Data }: { Data: Data }) => {
               </div>
               <div>
                 <div className="flex items-center space-x-2">
-                  <h3 className="text-foreground font-semibold text-base">
+                  <h1 className="text-foreground font-semibold text-base">
                     Alex Innovator
-                  </h3>
+                  </h1>
                   <span className="text-foreground text-xs font-medium">
-                    {new Intl.DateTimeFormat("en-US", {
-                      weekday: "short",
-                      day: "2-digit",
-                      month: "short",
-                      year: "2-digit",
-                      hour: "numeric",
-                    }).format(new Date(createdAt))}
+                    {uploadedAt}
                   </span>
                 </div>
                 <div className="text-blue-500 font-bold text-[10px] tracking-wider uppercase mt-0.5">
@@ -59,12 +62,14 @@ const Card = ({ Data }: { Data: Data }) => {
 
         <Link to={`/ideas/$ideaid`} params={{ ideaid: id }}>
           <div className="px-6 relative">
-            <div className="relative aspect-video overflow-hidden rounded-2xl border border-slate-800/50">
-              <img
-                src="https://images.unsplash.com/photo-1558449028-b53a39d100fc?auto=format&fit=crop&q=80&w=1000"
-                alt="Urban Farming Concept"
-                className="w-full h-full object-cover"
-              />
+            <div className="relative  overflow-hidden rounded-2xl border border-slate-800/50">
+              <AspectRatio ratio={16 / 9} className="bg-muted rounded-lg">
+                <img
+                  src="https://picsum.photos/seed/picsum/1000"
+                  alt="Urban Farming Concept"
+                  className="w-full h-full object-cover"
+                />
+              </AspectRatio>
               <div className="absolute bottom-3 right-3">
                 <div className="bg-black/60 backdrop-blur-md px-3 py-1 rounded-lg text-[10px] font-bold text-slate-100 tracking-wide border border-white/10 uppercase">
                   {tags[0]}
@@ -74,18 +79,18 @@ const Card = ({ Data }: { Data: Data }) => {
           </div>
 
           {/* Tags */}
-          <div className="px-6 py-4 flex flex-wrap gap-2">
+          <div className="px-6 py-2 flex flex-wrap gap-2">
             {tags.map((item, i) => (
               <div key={i}>
-                <Badge variant="info" appearance="outline">
-                  <span className="text-foreground">{item}</span>
+                <Badge variant="primary" appearance="default">
+                  <span className="text-primary-foreground">{item}</span>
                 </Badge>
               </div>
             ))}
           </div>
         </Link>
-        <div className="px-6 pb-6 pt-2">
-          <div className="h-px bg-slate-800 mb-6" />
+        <div className="px-6 pb-6 ">
+          <div className="h-px bg-foreground mb-6" />
           <div className="flex items-center justify-between">
             {/* butt */}
             <VoteButton
@@ -106,9 +111,9 @@ const Card = ({ Data }: { Data: Data }) => {
             </div>
           </div>
         </div>
-      </div>
+      </Card>
     </>
   );
 };
 
-export default Card;
+export default CardIdeas;

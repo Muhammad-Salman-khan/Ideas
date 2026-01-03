@@ -1,3 +1,4 @@
+import CardIdeas from "@/components/ui/Card/Card";
 import Card from "@/components/ui/Card/Card";
 import { FetchIdeas } from "@/hooks/useFetch";
 import type { Data } from "@/Type";
@@ -23,7 +24,7 @@ function IdeasPage() {
     <>
       <div className="flex justify-center align-middle mt-12 items-center flex-col">
         {data?.map((e) => (
-          <Card key={e.id} Data={e} />
+          <CardIdeas key={e.id} Data={e} />
         ))}
       </div>
     </>

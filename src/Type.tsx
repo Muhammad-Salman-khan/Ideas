@@ -7,3 +7,10 @@ export type Data = {
   tags: string[];
   user: string;
 };
+export type FormType = {
+  title: string;
+  summary: string;
+  description: string;
+  category: string;
+  image: File[] | null;
+};
