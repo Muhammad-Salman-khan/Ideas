@@ -8,6 +8,7 @@ import CommandBox from "../Search/CommandBox";
 import ThemeSwitch from "../ThemeSwitch/ThemeSwitch";
 import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/button";
+import User from "../User/User";
 const Navbar = () => {
   const [Open, setOpen] = useState<boolean>(false);
   const [value, setValue] = useState<string>("");
@@ -35,7 +36,7 @@ const Navbar = () => {
           <Link to="/ideas/new" className="">
             <Button>Post Idea</Button>
           </Link>
-          <NavUser />
+          <User />
         </div>
       </div>
       <CommandBox

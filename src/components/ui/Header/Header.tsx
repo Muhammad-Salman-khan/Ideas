@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import { Link } from "@tanstack/react-router";
 import { useTheme } from "@/Contexts/ThemeContext";
 import { Moon, Sun } from "lucide-react";
+import User from "../User/User";
 
 const menuItems = [
   { name: "Get Started", href: "/ideas" },
@@ -111,22 +112,29 @@ export const Header = () => {
                 >
                   {Theme === "dark" ? <Sun /> : <Moon />}
                 </Button>
-                <Button
-                  variant="default"
-                  size="sm"
-                  className={cn(
-                    isScrolled && "bg-primary text-primary-foreground font-bold"
-                  )}
-                >
-                  <Link className="font-bold" to="/">
-                    <span>Login</span>
-                  </Link>
-                </Button>
-                <Button size="sm" className={cn(isScrolled)}>
-                  <Link className="font-bold" to="/">
-                    <span>Sign Up</span>
-                  </Link>
-                </Button>
+                {false ? (
+                  <div className="gap-2">
+                    <Button
+                      variant="default"
+                      size="sm"
+                      className={cn(
+                        isScrolled &&
+                          "bg-primary text-primary-foreground font-bold"
+                      )}
+                    >
+                      <Link className="font-bold" to="/">
+                        <span>Login</span>
+                      </Link>
+                    </Button>
+                    <Button size="sm" className={cn(isScrolled)}>
+                      <Link className="font-bold" to="/">
+                        <span>Sign Up</span>
+                      </Link>
+                    </Button>
+                  </div>
+                ) : (
+                  <User />
+                )}
               </div>
             </div>
           </div>

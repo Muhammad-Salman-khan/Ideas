@@ -44,6 +44,9 @@ function NewIdea() {
       console.log(value);
       toast.success("Ideas Posted Successfully ");
     },
+    validators: ({ value }) => {
+      onchange: "";
+    },
   });
   console.log(form);
 
