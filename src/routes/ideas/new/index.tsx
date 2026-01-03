@@ -38,12 +38,15 @@ function NewIdea() {
       description: "",
       image: [] as File[],
       category: "Technology",
+      tags: ["informative", "tech", "Ai"],
     } as FormType,
     onSubmit: ({ value }) => {
       console.log(value);
       toast.success("Ideas Posted Successfully ");
     },
   });
+  console.log(form);
+
   return (
     <>
       <Card className="m-auto mt-5 max-w-3xl">
