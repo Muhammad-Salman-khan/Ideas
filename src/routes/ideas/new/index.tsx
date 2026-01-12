@@ -23,8 +23,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/tooltip";
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { Info } from "lucide-react";
 import { toast } from "sonner";
-import type { FormType } from "@/Type";
-
+import { FormsSchema, type FormsSchemaType } from "@/schemas";
 export const Route = createFileRoute("/ideas/new/")({
   component: NewIdea,
 });
@@ -36,19 +35,19 @@ function NewIdea() {
       title: "",
       summary: "",
       description: "",
-      image: [] as File[],
+      image: undefined,
       category: "Technology",
       tags: ["informative", "tech", "Ai"],
-    } as FormType,
+    } as FormsSchemaType,
     onSubmit: ({ value }) => {
       console.log(value);
       toast.success("Ideas Posted Successfully ");
     },
-    // validators: ({ value }) => {
-    //   onchange: "";
-    // },
+    validators: { onChange: FormsSchema },
+    validatorOptions: {
+      debounceMs: 300,
+    },
   });
-  console.log(form);
 
   return (
     <>
@@ -68,23 +67,7 @@ function NewIdea() {
             <FieldGroup>
               <FieldSet>
                 <FieldGroup>
-                  <form.Field
-                    name="title"
-                    validators={{
-                      onChange: ({ value }) => {
-                        let error = "";
-                        if (value.trim() === "") {
-                          return (error = "title is Required");
-                        } else if (value.length < 6) {
-                          return (error = "Title is too short ");
-                        } else if (value.length > 100) {
-                          return (error = "Title is too big");
-                        } else {
-                          return undefined;
-                        }
-                      },
-                    }}
-                  >
+                  <form.Field name="title">
                     {(field) => (
                       <Field>
                         <FieldLabel htmlFor="title">Title</FieldLabel>
@@ -95,30 +78,14 @@ function NewIdea() {
                           value={field.state.value}
                           onChange={(e) => field.handleChange(e.target.value)}
                         />
-                        <span className="capitalize text-destructive">
-                          {field.state.meta.errors}
-                        </span>
+                        <p className="text-destructive capitalize ">
+                          {field.state.meta.errors?.map((e: any) => e?.message)}
+                        </p>
                       </Field>
                     )}
                   </form.Field>
                   <Field>
-                    <form.Field
-                      name="summary"
-                      validators={{
-                        onChange: ({ value }) => {
-                          let error = "";
-                          if (value.trim() === "") {
-                            return (error = "summary is Required");
-                          } else if (value.length < 50) {
-                            return (error = "summary is too short ");
-                          } else if (value.length > 600) {
-                            return (error = "summary is too big");
-                          } else {
-                            return undefined;
-                          }
-                        },
-                      }}
-                    >
+                    <form.Field name="summary">
                       {(field) => (
                         <>
                           <FieldLabel htmlFor="summary">Summary</FieldLabel>
@@ -130,9 +97,11 @@ function NewIdea() {
                             value={field.state.value}
                             onChange={(e) => field.handleChange(e.target.value)}
                           />
-                          <span className="capitalize text-destructive">
-                            {field.state.meta.errors}
-                          </span>
+                          <p className="text-destructive capitalize ">
+                            {field.state.meta.errors?.map(
+                              (e: any) => e?.message
+                            )}
+                          </p>
                         </>
                       )}
                     </form.Field>
@@ -150,21 +119,7 @@ function NewIdea() {
                   <FieldSet>
                     <FieldGroup>
                       <Field>
-                        <form.Field
-                          name="description"
-                          validators={{
-                            onChange: ({ value }) => {
-                              let error;
-                              if (value.trim() === "") {
-                                return (error = "Description is Required");
-                              } else if (value.length < 30) {
-                                return (error = "Description is too short ");
-                              } else {
-                                return undefined;
-                              }
-                            },
-                          }}
-                        >
+                        <form.Field name="description">
                           {(field) => (
                             <>
                               <FieldLabel htmlFor="description">
@@ -180,9 +135,11 @@ function NewIdea() {
                                   field.handleChange(e.target.value)
                                 }
                               />
-                              <span className="capitalize text-destructive">
-                                {field.state.meta.errors}
-                              </span>
+                              <p className="text-destructive capitalize ">
+                                {field.state.meta.errors?.map(
+                                  (e: any) => e?.message
+                                )}
+                              </p>
                             </>
                           )}
                         </form.Field>
@@ -198,25 +155,7 @@ function NewIdea() {
                     className="relative  rounded-2xl h-full hover:border-slate-600 transition-all group"
                     orientation="vertical"
                   >
-                    <form.Field
-                      name="image"
-                      validators={{
-                        onChange: ({ value }) => {
-                          let error = "";
-                          if (!value || value.length === 0 || !value[0]) {
-                            return undefined;
-                          }
-
-                          const file = value[0];
-                          if (file.size > 5 * 1024 * 1024) {
-                            return "Image must be under 5MB";
-                          }
-                          if (!file.type.startsWith("image/")) {
-                            return (error = "Only images are allowed");
-                          }
-                        },
-                      }}
-                    >
+                    <form.Field name="image">
                       {(field) => (
                         <>
                           <FieldLabel
@@ -232,6 +171,11 @@ function NewIdea() {
                             onFileRemove={() => field.handleChange([])}
                             acceptedFileTypes={["image/*"]}
                           />
+                          <p className="text-destructive capitalize ">
+                            {field.state.meta.errors?.map(
+                              (e: any) => e?.message
+                            )}
+                          </p>
                         </>
                       )}
                     </form.Field>
@@ -243,7 +187,7 @@ function NewIdea() {
                     className="rounded-xl ml-2  hover:border-slate-600 transition-all "
                   >
                     <form.Field name="category">
-                      {(feild) => (
+                      {(field) => (
                         <>
                           <FieldLabel
                             htmlFor="category"
@@ -251,9 +195,9 @@ function NewIdea() {
                           >
                             Category
                           </FieldLabel>
-                          <Select onValueChange={feild.handleChange}>
+                          <Select onValueChange={field.handleChange}>
                             <SelectTrigger
-                              value={feild.state.value}
+                              value={field.state.value}
                               id="category"
                             >
                               <SelectValue placeholder="Select Category" />
@@ -267,6 +211,11 @@ function NewIdea() {
                               <SelectItem value="Other..">Other</SelectItem>
                             </SelectContent>
                           </Select>
+                          <p className="text-destructive capitalize ">
+                            {field.state.meta.errors?.map(
+                              (e: any) => e?.message
+                            )}
+                          </p>
                         </>
                       )}
                     </form.Field>

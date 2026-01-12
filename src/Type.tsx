@@ -13,5 +13,5 @@ export type FormType = {
   description: string;
   category: string;
   tags?: string[];
-  image: File[] | null;
+  image?: File[] | undefined;
 };

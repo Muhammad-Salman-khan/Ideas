@@ -1,299 +1,259 @@
-Welcome to your new TanStack app! 
+﻿================================================================================
+IDEAS FRONT-END PROJECT
+A Modern Ideas Sharing Platform
+================================================================================
+
+## PROJECT OVERVIEW
+
+Ideas Hub is a web application platform designed to help users discover, share,
+and validate startup ideas, side hustles, and business concepts. The platform
+enables users to post their innovative ideas, view detailed descriptions, and
+interact with a community of creators and entrepreneurs.
+
+## WHAT HAS BEEN IMPLEMENTED SO FAR
+
+1. PROJECT FOUNDATION & SETUP
+
+   - Vite-based React application with TypeScript
+   - TanStack Router for file-based routing
+   - TanStack Query for server state management
+   - TanStack Form for form handling and validation
+   - Tailwind CSS v4 for styling
+   - React 19 with React Compiler enabled
+
+2. ROUTING ARCHITECTURE
+   Routes Implemented:
+
+   - / (Home/Landing page with Hero Section)
+   - /ideas (Ideas listing page)
+   - /ideas/:ideaid (Individual idea detail page)
+   - /ideas/new (Create new idea form)
+   - /about (About page structure)
+
+   Features:
+
+   - File-based routing with TanStack Router
+   - Nested layouts with shared sidebar
+   - Route-level data loading with loaders
+   - Suspense boundaries for async operations
+   - 404 Not Found page handling
+
+3. UI COMPONENTS LIBRARY
+   Implemented Shadcn/ui Components:
+
+   - Alert, Avatar, Badge, Button
+   - Card, Command, Dialog
+   - Dropdown Menu, Input, Label
+   - Menubar, Select, Separator
+   - Sheet, Sidebar, Skeleton
+   - Textarea, Tooltip
+   - File Upload (custom)
+   - Text Loop Animation
+
+   Custom Components:
+
+   - Header with Navigation
+   - Hero Section for landing page
+   - Card for displaying ideas
+   - DetailCard for full idea view
+   - AppSidebar for ideas section
+   - Logo component
+   - ThemeSwitch for dark/light mode
+   - User profile component
+   - VoteButton component
+   - Search component
+   - ShareDialog component
 
-# Getting Started
+4. STATE MANAGEMENT & DATA FETCHING
 
-To run this application:
+   - Axios instance configured for API calls
+   - Custom useFetch hooks (FetchData, FetchIdeas)
+   - TanStack Query integration for caching
+   - Query options with suspense queries
+   - API proxy configured (localhost:8000 → /api)
 
-```bash
-pnpm install
-pnpm start
-```
+5. FORM HANDLING
 
-# Building For Production
+   - TanStack Form integration
+   - Zod schema validation
+   - Real-time field validation
+   - File upload functionality
+   - Form fields: title, summary, description, image, category, tags
+   - Debounced validation (300ms)
 
-To build this application for production:
+6. THEME SYSTEM
 
-```bash
-pnpm build
-```
+   - Custom ThemeContext with React Context API
+   - localStorage persistence
+   - Light/Dark mode toggle
+   - System-wide theme switching
 
-## Testing
+7. TYPE DEFINITIONS
+   Core Types:
 
-This project uses [Vitest](https://vitest.dev/) for testing. You can run the tests with:
+   - Data: id, title, summary, description, createdAt, tags, user
+   - FormType: title, summary, description, category, tags, image
 
-```bash
-pnpm test
-```
+8. MOCK DATA & DEVELOPMENT SERVER
 
-## Styling
+   - JSON Server setup for development API
+   - Mock database with sample ideas
+   - Ideas stored in db/db.json
+   - Running on port 8000
 
-This project uses [Tailwind CSS](https://tailwindcss.com/) for styling.
+9. DEVELOPER EXPERIENCE
 
+   - TanStack DevTools integration
+   - React Query DevTools
+   - Router DevTools Panel
+   - Hot Module Replacement (HMR)
+   - TypeScript strict mode
+   - Path aliases (@/_ → src/_)
 
+10. TESTING SETUP
 
-## Shadcn
+    - Vitest configuration
+    - Testing Library (React & DOM)
+    - JSDOM environment
 
-Add components using the latest version of [Shadcn](https://ui.shadcn.com/).
+11. NOTIFICATIONS & UX
 
-```bash
-pnpm dlx shadcn@latest add button
-```
+    - Sonner toast notifications
+    - Success/error feedback
+    - Rich colors and theming
 
+12. ACCESSIBILITY & SEO
+    - Semantic HTML structure
+    - Meta tags for SEO
+    - Viewport configuration
+    - Robots meta tags
+    - Dynamic page titles per route
 
+## TECHNOLOGIES USED
 
-## Routing
-This project uses [TanStack Router](https://tanstack.com/router). The initial setup is a file based router. Which means that the routes are managed as files in `src/routes`.
+Core Framework:
 
-### Adding A Route
+- React 19.2.0
+- TypeScript 5.7.2
+- Vite 7.1.7
 
-To add a new route to your application just add another a new file in the `./src/routes` directory.
+Routing & State:
 
-TanStack will automatically generate the content of the route file for you.
+- @tanstack/react-router 1.132.0
+- @tanstack/react-query 5.66.5
+- @tanstack/react-form 1.27.7
 
-Now that you have two routes you can use a `Link` component to navigate between them.
+Styling:
 
-### Adding Links
+- Tailwind CSS 4.0.6
+- Class Variance Authority
+- clsx & tailwind-merge
+- Radix UI primitives
+- Lucide React icons
 
-To use SPA (Single Page Application) navigation you will need to import the `Link` component from `@tanstack/react-router`.
+Animation:
 
-```tsx
-import { Link } from "@tanstack/react-router";
-```
+- Motion (Framer Motion) 12.23.26
+- Anime.js 4.2.2
 
-Then anywhere in your JSX you can use it like so:
+Form & Validation:
 
-```tsx
-<Link to="/about">About</Link>
-```
+- Zod 4.3.4
 
-This will create a link that will navigate to the `/about` route.
+HTTP Client:
 
-More information on the `Link` component can be found in the [Link documentation](https://tanstack.com/router/v1/docs/framework/react/api/router/linkComponent).
+- Axios 1.13.2
 
-### Using A Layout
+Development:
 
-In the File Based Routing setup the layout is located in `src/routes/__root.tsx`. Anything you add to the root route will appear in all the routes. The route content will appear in the JSX where you use the `<Outlet />` component.
+- json-server 1.0.0-beta.3
+- Vitest 3.0.5
+- React Compiler (Babel plugin)
 
-Here is an example layout that includes a header:
+UI Libraries:
 
-```tsx
-import { Outlet, createRootRoute } from '@tanstack/react-router'
-import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
+- Radix UI components
+- Shadcn/ui component system
+- Sonner for toasts
+- cmdk for command palette
 
-import { Link } from "@tanstack/react-router";
+## CURRENT PROJECT STATUS
 
-export const Route = createRootRoute({
-  component: () => (
-    <>
-      <header>
-        <nav>
-          <Link to="/">Home</Link>
-          <Link to="/about">About</Link>
-        </nav>
-      </header>
-      <Outlet />
-      <TanStackRouterDevtools />
-    </>
-  ),
-})
-```
+✅ Basic application structure complete
+✅ Routing system implemented
+✅ Component library established
+✅ Form handling with validation
+✅ Data fetching infrastructure
+✅ Theme system working
+✅ Mock API server running
+✅ Development environment optimized
 
-The `<TanStackRouterDevtools />` component is not required so you can remove it if you don't want it in your layout.
-
-More information on layouts can be found in the [Layouts documentation](https://tanstack.com/router/latest/docs/framework/react/guide/routing-concepts#layouts).
+## PROJECT STRUCTURE
 
+ideas-front-end/
+├── public/ # Static assets
+├── src/
+│ ├── components/ # Shadcn UI components
+│ │ └── ui/ # Custom UI components
+│ ├── Contexts/ # React contexts (Theme)
+│ ├── db/ # Mock database (JSON)
+│ ├── hooks/ # Custom React hooks
+│ ├── integrations/ # Third-party integrations
+│ ├── lib/ # Utility functions & configs
+│ ├── routes/ # File-based routes
+│ ├── schemas/ # Zod validation schemas
+│ ├── main.tsx # Application entry point
+│ ├── styles.css # Global styles
+│ └── Type.tsx # TypeScript type definitions
+├── package.json # Dependencies & scripts
+├── vite.config.ts # Vite configuration
+├── tsconfig.json # TypeScript configuration
+└── components.json # Shadcn component config
 
-## Data Fetching
-
-There are multiple ways to fetch data in your application. You can use TanStack Query to fetch data from a server. But you can also use the `loader` functionality built into TanStack Router to load the data for a route before it's rendered.
-
-For example:
-
-```tsx
-const peopleRoute = createRoute({
-  getParentRoute: () => rootRoute,
-  path: "/people",
-  loader: async () => {
-    const response = await fetch("https://swapi.dev/api/people");
-    return response.json() as Promise<{
-      results: {
-        name: string;
-      }[];
-    }>;
-  },
-  component: () => {
-    const data = peopleRoute.useLoaderData();
-    return (
-      <ul>
-        {data.results.map((person) => (
-          <li key={person.name}>{person.name}</li>
-        ))}
-      </ul>
-    );
-  },
-});
-```
+## HOW TO RUN
 
-Loaders simplify your data fetching logic dramatically. Check out more information in the [Loader documentation](https://tanstack.com/router/latest/docs/framework/react/guide/data-loading#loader-parameters).
+1. Install dependencies:
+   pnpm install
 
-### React-Query
+2. Start development server:
+   pnpm dev
+   (Runs on http://localhost:3000)
 
-React-Query is an excellent addition or alternative to route loading and integrating it into you application is a breeze.
+3. Start mock API server:
+   pnpm json
+   (Runs on http://localhost:8000)
 
-First add your dependencies:
+4. Build for production:
+   pnpm build
 
-```bash
-pnpm add @tanstack/react-query @tanstack/react-query-devtools
-```
-
-Next we'll need to create a query client and provider. We recommend putting those in `main.tsx`.
-
-```tsx
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+5. Run tests:
+   pnpm test
 
-// ...
+6. Preview production build:
+   pnpm preview
 
-const queryClient = new QueryClient();
+## KEY FEATURES WORKING
 
-// ...
+✅ View all ideas in a list
+✅ View individual idea details
+✅ Create new idea with form validation
+✅ Theme switching (light/dark)
+✅ Responsive sidebar navigation
+✅ File upload for images
+✅ Toast notifications
+✅ Client-side routing
+✅ Data caching with React Query
+✅ Loading states with Suspense
 
-if (!rootElement.innerHTML) {
-  const root = ReactDOM.createRoot(rootElement);
+## NOTES
 
-  root.render(
-    <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
-    </QueryClientProvider>
-  );
-}
-```
+- The project uses a mock JSON server for development
+- Real backend integration is pending
+- Authentication/Authorization not yet implemented
+- User profiles are placeholder data
+- Voting system UI exists but not connected
+- Search functionality exists but not connected
 
-You can also add TanStack Query Devtools to the root route (optional).
-
-```tsx
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-
-const rootRoute = createRootRoute({
-  component: () => (
-    <>
-      <Outlet />
-      <ReactQueryDevtools buttonPosition="top-right" />
-      <TanStackRouterDevtools />
-    </>
-  ),
-});
-```
-
-Now you can use `useQuery` to fetch your data.
-
-```tsx
-import { useQuery } from "@tanstack/react-query";
-
-import "./App.css";
-
-function App() {
-  const { data } = useQuery({
-    queryKey: ["people"],
-    queryFn: () =>
-      fetch("https://swapi.dev/api/people")
-        .then((res) => res.json())
-        .then((data) => data.results as { name: string }[]),
-    initialData: [],
-  });
-
-  return (
-    <div>
-      <ul>
-        {data.map((person) => (
-          <li key={person.name}>{person.name}</li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-
-export default App;
-```
-
-You can find out everything you need to know on how to use React-Query in the [React-Query documentation](https://tanstack.com/query/latest/docs/framework/react/overview).
-
-## State Management
-
-Another common requirement for React applications is state management. There are many options for state management in React. TanStack Store provides a great starting point for your project.
-
-First you need to add TanStack Store as a dependency:
-
-```bash
-pnpm add @tanstack/store
-```
-
-Now let's create a simple counter in the `src/App.tsx` file as a demonstration.
-
-```tsx
-import { useStore } from "@tanstack/react-store";
-import { Store } from "@tanstack/store";
-import "./App.css";
-
-const countStore = new Store(0);
-
-function App() {
-  const count = useStore(countStore);
-  return (
-    <div>
-      <button onClick={() => countStore.setState((n) => n + 1)}>
-        Increment - {count}
-      </button>
-    </div>
-  );
-}
-
-export default App;
-```
-
-One of the many nice features of TanStack Store is the ability to derive state from other state. That derived state will update when the base state updates.
-
-Let's check this out by doubling the count using derived state.
-
-```tsx
-import { useStore } from "@tanstack/react-store";
-import { Store, Derived } from "@tanstack/store";
-import "./App.css";
-
-const countStore = new Store(0);
-
-const doubledStore = new Derived({
-  fn: () => countStore.state * 2,
-  deps: [countStore],
-});
-doubledStore.mount();
-
-function App() {
-  const count = useStore(countStore);
-  const doubledCount = useStore(doubledStore);
-
-  return (
-    <div>
-      <button onClick={() => countStore.setState((n) => n + 1)}>
-        Increment - {count}
-      </button>
-      <div>Doubled - {doubledCount}</div>
-    </div>
-  );
-}
-
-export default App;
-```
-
-We use the `Derived` class to create a new store that is derived from another store. The `Derived` class has a `mount` method that will start the derived store updating.
-
-Once we've created the derived store we can use it in the `App` component just like we would any other store using the `useStore` hook.
-
-You can find out everything you need to know on how to use TanStack Store in the [TanStack Store documentation](https://tanstack.com/store/latest).
-
-# Demo files
-
-Files prefixed with `demo` can be safely deleted. They are there to provide a starting point for you to play around with the features you've installed.
-
-# Learn More
-
-You can learn more about all of the offerings from TanStack in the [TanStack documentation](https://tanstack.com).
+==================================================
+Last Updated: January 2025
+==================================================

@@ -19,7 +19,7 @@ export function Share() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline">
+        <Button className="bg-primary text-primary-foreground">
           <Share2 />
           Share
         </Button>

@@ -23,7 +23,7 @@ const CardIdeas = ({ Data }: { Data: Data }) => {
         key={id}
         className="max-w-4xl w-full m-3 card border rounded-3xl overflow-hidden shadow-2xl transition-all duration-300 hover:border-slate-700"
       >
-        <div className="p-6 pb-4">
+        <div className="p-4 pb-2">
           <div className="flex items-start justify-between">
             <div className="flex items-center space-x-3">
               <div className="relative">
@@ -50,7 +50,7 @@ const CardIdeas = ({ Data }: { Data: Data }) => {
             <MenubarDemo id={id} />
           </div>
 
-          <div className="mt-5 space-y-3">
+          <div className="mt-2 space-y-3">
             <h2 className="text-foreground text-2xl font-bold leading-tight">
               {title}
             </h2>
@@ -61,8 +61,8 @@ const CardIdeas = ({ Data }: { Data: Data }) => {
         </div>
 
         <Link to={`/ideas/$ideaid`} params={{ ideaid: id }}>
-          <div className="px-6 relative">
-            <div className="relative  overflow-hidden rounded-2xl border border-slate-800/50">
+          <div className="px-2 relative">
+            <div className="relative  overflow-hidden rounded-md border border-slate-800/50">
               <AspectRatio ratio={16 / 9} className="bg-muted rounded-lg">
                 <img
                   src="https://picsum.photos/seed/picsum/1000"
@@ -70,7 +70,7 @@ const CardIdeas = ({ Data }: { Data: Data }) => {
                   className="w-full h-full object-cover"
                 />
               </AspectRatio>
-              <div className="absolute bottom-3 right-3">
+              <div className="absolute bottom-3 mt-2 right-3">
                 <div className="bg-black/60 backdrop-blur-md px-3 py-1 rounded-lg text-[10px] font-bold text-slate-100 tracking-wide border border-white/10 uppercase">
                   {tags[0]}
                 </div>
@@ -79,7 +79,7 @@ const CardIdeas = ({ Data }: { Data: Data }) => {
           </div>
 
           {/* Tags */}
-          <div className="px-6 py-2 flex flex-wrap gap-2">
+          <div className="p-4 mt-2 py-2 flex flex-wrap gap-2">
             {tags.map((item, i) => (
               <div key={i}>
                 <Badge variant="primary" appearance="default">
@@ -89,8 +89,8 @@ const CardIdeas = ({ Data }: { Data: Data }) => {
             ))}
           </div>
         </Link>
-        <div className="px-6 pb-6 ">
-          <div className="h-px bg-foreground mb-6" />
+        <div className="px-3">
+          <div className="h-px border mb-2" />
           <div className="flex items-center justify-between">
             {/* butt */}
             <VoteButton
