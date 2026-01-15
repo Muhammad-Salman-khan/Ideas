@@ -21,9 +21,18 @@ import {
 import { Textarea } from "@/components/textarea";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/tooltip";
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { Info } from "lucide-react";
+import { ArrowBigUpIcon, Info } from "lucide-react";
 import { toast } from "sonner";
 import { FormsSchema, type FormsSchemaType } from "@/schemas";
+import { InputGroup } from "@/components/input-group";
+import {
+  DropdownMenu,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/dropdown-menu";
 export const Route = createFileRoute("/ideas/new/")({
   component: NewIdea,
 });
@@ -41,16 +50,16 @@ function NewIdea() {
     } as FormsSchemaType,
     onSubmit: async ({ value }) => {
       const formData = new FormData();
-      // formData.append("image", value.);
       formData.append("title", value.title);
       formData.append("summary", value.summary);
       formData.append("description", value.description);
-      // formData.append("tags", value?.tags);
       formData.append("category", value.category);
 
       if (value.image) {
         formData.append("image", value.image, value.image.name);
       }
+      console.log(formData);
+
       toast.success("Ideas Posted Successfully ");
     },
     validators: { onChange: FormsSchema },
