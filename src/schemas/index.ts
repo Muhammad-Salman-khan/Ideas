@@ -19,12 +19,16 @@ export const FormsSchema = z.object({
     .max(600, "You exceeed the limit"),
   description: z.string(),
   image: z
-    .any()
+    .instanceof(File)
     .refine(
-      (file) => ACCEPTED_IMAGE_TYPES.includes(file?.[0]?.type),
-      "Only .jpg, .jpeg, .png and .webp formats are supported."
+      (file) =>
+        ["image/jpeg", "image/jpg", "image/png", "image/webp"].includes(
+          file.type
+        ),
+      { message: "Invalid image file type" }
     )
     .optional(),
+
   category: z.string(),
   tags: z.array(z.string()).optional(),
 });

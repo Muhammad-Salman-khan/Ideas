@@ -39,14 +39,24 @@ function NewIdea() {
       category: "Technology",
       tags: ["informative", "tech", "Ai"],
     } as FormsSchemaType,
-    onSubmit: ({ value }) => {
-      console.log(value);
+    onSubmit: async ({ value }) => {
+      const formData = new FormData();
+      // formData.append("image", value.);
+      formData.append("title", value.title);
+      formData.append("summary", value.summary);
+      formData.append("description", value.description);
+      // formData.append("tags", value?.tags);
+      formData.append("category", value.category);
+
+      if (value.image) {
+        formData.append("image", value.image, value.image.name);
+      }
       toast.success("Ideas Posted Successfully ");
     },
     validators: { onChange: FormsSchema },
-    validatorOptions: {
-      debounceMs: 300,
-    },
+    // validatorOptions: {
+    //   debounceMs: 300,
+    // },
   });
 
   return (
@@ -166,9 +176,9 @@ function NewIdea() {
                           </FieldLabel>
                           <FileUpload
                             className="flex items-center justify-center rounded-xl w-screen transition-all"
-                            currentFile={field.state.value?.[0] || null}
-                            onUploadSuccess={(e) => field.handleChange([e])}
-                            onFileRemove={() => field.handleChange([])}
+                            currentFile={field.state.value || null}
+                            onUploadSuccess={(e) => field.handleChange(e)}
+                            // onFileRemove={() => field.handleChange([])}
                             acceptedFileTypes={["image/*"]}
                           />
                           <p className="text-destructive capitalize ">
