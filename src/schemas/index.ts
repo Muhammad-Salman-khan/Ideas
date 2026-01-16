@@ -30,5 +30,5 @@ export const FormsSchema = z.object({
     .optional(),
 
   category: z.string(),
-  tags: z.array(z.string()).optional(),
+  tags: z.array(z.string()).max(3).optional(),
 });

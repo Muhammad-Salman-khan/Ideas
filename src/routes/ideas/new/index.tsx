@@ -45,7 +45,9 @@ function NewIdea() {
       formData.append("title", value.title);
       formData.append("summary", value.summary);
       formData.append("description", value.description);
-      formData.append("tags", value.tags);
+      value.tags?.forEach((e) => {
+        formData.append("tags", e);
+      });
       formData.append("category", value.category);
 
       if (value.image) {
