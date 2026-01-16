@@ -24,15 +24,7 @@ import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { ArrowBigUpIcon, Info } from "lucide-react";
 import { toast } from "sonner";
 import { FormsSchema, type FormsSchemaType } from "@/schemas";
-import { InputGroup } from "@/components/input-group";
-import {
-  DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/dropdown-menu";
+import Api from "@/lib/axios";
 export const Route = createFileRoute("/ideas/new/")({
   component: NewIdea,
 });
@@ -53,14 +45,20 @@ function NewIdea() {
       formData.append("title", value.title);
       formData.append("summary", value.summary);
       formData.append("description", value.description);
+      formData.append("tags", value.tags);
       formData.append("category", value.category);
 
       if (value.image) {
-        formData.append("image", value.image, value.image.name);
+        formData.append("image", value.image);
       }
-      console.log(formData);
-
-      toast.success("Ideas Posted Successfully ");
+      try {
+        const res = await Api.post("/ideas", formData);
+        toast.success("Ideas Posted Successfully ");
+        console.log("✅ SUCCESS!", res); //
+        console.log("Form fields:", res.data.form);
+      } catch (e) {
+        console.log(e);
+      }
     },
     validators: { onChange: FormsSchema },
     // validatorOptions: {

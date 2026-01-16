@@ -10,12 +10,12 @@ import { AspectRatio } from "@/components/aspect-ratio";
 
 const CardIdeas = ({ Data }: { Data: Data }) => {
   const { id, title, summary, createdAt, tags } = Data;
-  const uploadedAt = new Intl.DateTimeFormat("en-US", {
-    weekday: "short",
-    day: "numeric",
-    month: "numeric",
-    year: "numeric",
-  }).format(new Date(createdAt));
+  // const uploadedAt = new Intl.DateTimeFormat("en-US", {
+  //   weekday: "short",
+  //   day: "numeric",
+  //   month: "numeric",
+  //   year: "numeric",
+  // }).format(new Date(createdAt));
 
   return (
     <>
@@ -39,11 +39,11 @@ const CardIdeas = ({ Data }: { Data: Data }) => {
                     Alex Innovator
                   </h1>
                   <span className="text-foreground text-xs font-medium">
-                    {uploadedAt}
+                    {/* {uploadedAt && } */}
                   </span>
                 </div>
                 <div className="text-blue-500 font-bold text-[10px] tracking-wider uppercase mt-0.5">
-                  #ID-1024
+                  t #ID-1024
                 </div>
               </div>
             </div>
