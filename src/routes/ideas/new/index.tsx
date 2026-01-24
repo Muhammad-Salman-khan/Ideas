@@ -21,11 +21,9 @@ import {
 import { Textarea } from "@/components/textarea";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/tooltip";
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { ArrowBigUpIcon, Info } from "lucide-react";
+import { Info } from "lucide-react";
 import { toast } from "sonner";
 import { FormsSchema, type FormsSchemaType } from "@/schemas";
-import Api from "@/lib/axios";
-import { Label } from "@/components/label";
 export const Route = createFileRoute("/ideas/new/")({
   component: NewIdea,
 });
@@ -42,18 +40,7 @@ function NewIdea() {
       tags: ["informative", "tech", "Ai"],
     } as FormsSchemaType,
     onSubmit: async ({ value }) => {
-      const formData = new FormData();
-      formData.append("title", value.title);
-      formData.append("summary", value.summary);
-      formData.append("description", value.description);
-      value.tags?.forEach((e) => {
-        formData.append("tags", e);
-      });
-      formData.append("category", value.category);
-      if (value.image) {
-        formData.append("image", value.image);
-      }
-      console.log(formData);
+      console.log(value);
     },
     validators: {
       onChange: FormsSchema,

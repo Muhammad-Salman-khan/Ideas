@@ -23,9 +23,9 @@ export const FormsSchema = z.object({
     .refine(
       (file) =>
         ["image/jpeg", "image/jpg", "image/png", "image/webp"].includes(
-          file.type
+          file.type,
         ),
-      { message: "Invalid image file type" }
+      { message: "Invalid image file type" },
     )
     .optional(),
 
