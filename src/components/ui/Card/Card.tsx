@@ -2,20 +2,20 @@ import type { Data } from "@/Type";
 import { MessageSquare } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { Badge } from "../../badge";
-import VoteButton from "../VoteButton/VoteButton";
 import { MenubarDemo } from "../Menu/Menu";
 import { Share } from "../ShareDialog/Share";
 import { CardHeader, Card } from "@/components/card";
 import { AspectRatio } from "@/components/aspect-ratio";
+import LikeButton from "../VoteButton/LikeButton";
 
 const CardIdeas = ({ Data }: { Data: Data }) => {
   const { id, title, summary, createdAt, tags } = Data;
-  // const uploadedAt = new Intl.DateTimeFormat("en-US", {
-  //   weekday: "short",
-  //   day: "numeric",
-  //   month: "numeric",
-  //   year: "numeric",
-  // }).format(new Date(createdAt));
+  const uploadedAt = new Intl.DateTimeFormat("en-US", {
+    weekday: "short",
+    day: "numeric",
+    month: "numeric",
+    year: "numeric",
+  }).format(new Date(createdAt));
 
   return (
     <>
@@ -93,13 +93,7 @@ const CardIdeas = ({ Data }: { Data: Data }) => {
           <div className="h-px border mb-2" />
           <div className="flex items-center justify-between">
             {/* butt */}
-            <VoteButton
-              id={id}
-              direction={"up"}
-              count="1.2k"
-              onUpvote={() => console.log("up")}
-              onDownvote={() => console.log("down")}
-            />
+            <LikeButton />
             <div className="flex items-center space-x-1 sm:space-x-4">
               <Link to={`/ideas/$ideaid`} params={{ ideaid: id }}>
                 <button className="flex items-center space-x-2 text-slate-400 hover:text-white transition-colors px-3 py-2 rounded-xl hover:bg-slate-800/50">

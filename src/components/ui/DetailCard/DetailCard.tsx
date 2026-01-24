@@ -4,7 +4,7 @@ import DetailAuthor from "./DetailAuthor";
 import DetailCardContent from "./DetailCardContent";
 import DetailCardSummary from "./DetailCardSummary";
 import { Link } from "@tanstack/react-router";
-import VoteButton from "../VoteButton/VoteButton";
+import VoteButton from "../VoteButton/LikeButton";
 import { Share } from "../ShareDialog/Share";
 import { GitCommitVerticalIcon } from "lucide-react";
 import { AspectRatio } from "@/components/aspect-ratio";

@@ -25,6 +25,7 @@ import { ArrowBigUpIcon, Info } from "lucide-react";
 import { toast } from "sonner";
 import { FormsSchema, type FormsSchemaType } from "@/schemas";
 import Api from "@/lib/axios";
+import { Label } from "@/components/label";
 export const Route = createFileRoute("/ideas/new/")({
   component: NewIdea,
 });
@@ -49,23 +50,15 @@ function NewIdea() {
         formData.append("tags", e);
       });
       formData.append("category", value.category);
-
       if (value.image) {
         formData.append("image", value.image);
       }
-      try {
-        const res = await Api.post("/ideas", formData);
-        toast.success("Ideas Posted Successfully ");
-        console.log("✅ SUCCESS!", res); //
-        console.log("Form fields:", res.data.form);
-      } catch (e) {
-        console.log(e);
-      }
+      console.log(formData);
     },
-    validators: { onChange: FormsSchema },
-    // validatorOptions: {
-    //   debounceMs: 300,
-    // },
+    validators: {
+      onChange: FormsSchema,
+      onChangeAsyncDebounceMs: 400,
+    },
   });
 
   return (
@@ -80,7 +73,7 @@ function NewIdea() {
         <CardContent>
           <form
             onSubmit={(e) => {
-              e.preventDefault(), form.handleSubmit();
+              (e.preventDefault(), form.handleSubmit());
             }}
           >
             <FieldGroup>
@@ -118,7 +111,7 @@ function NewIdea() {
                           />
                           <p className="text-destructive capitalize ">
                             {field.state.meta.errors?.map(
-                              (e: any) => e?.message
+                              (e: any) => e?.message,
                             )}
                           </p>
                         </>
@@ -156,7 +149,7 @@ function NewIdea() {
                               />
                               <p className="text-destructive capitalize ">
                                 {field.state.meta.errors?.map(
-                                  (e: any) => e?.message
+                                  (e: any) => e?.message,
                                 )}
                               </p>
                             </>
@@ -192,7 +185,7 @@ function NewIdea() {
                           />
                           <p className="text-destructive capitalize ">
                             {field.state.meta.errors?.map(
-                              (e: any) => e?.message
+                              (e: any) => e?.message,
                             )}
                           </p>
                         </>
@@ -210,7 +203,7 @@ function NewIdea() {
                         <>
                           <FieldLabel
                             htmlFor="category"
-                            className="text-sm font-medium text-foreground mb-3 flex items-center gap-2"
+                            className="text-sm font-medium text-foreground  flex items-center gap-2"
                           >
                             Category
                           </FieldLabel>
@@ -232,9 +225,42 @@ function NewIdea() {
                           </Select>
                           <p className="text-destructive capitalize ">
                             {field.state.meta.errors?.map(
-                              (e: any) => e?.message
+                              (e: any) => e?.message,
                             )}
                           </p>
+                        </>
+                      )}
+                    </form.Field>
+                  </Field>
+                </FieldGroup>
+                <FieldGroup>
+                  <Field
+                    orientation="horizontal"
+                    className="rounded-xl  hover:border-slate-600 transition-all"
+                  >
+                    <form.Field name="tags" mode="array">
+                      {(field) => (
+                        <>
+                          <FieldLabel
+                            htmlFor="tags"
+                            className="text-sm font-medium text-foreground flex items-center gap-2"
+                          >
+                            Tags
+                          </FieldLabel>
+
+                          {field?.state?.value.map((_, i) => (
+                            <form.Field key={i} name={`tags.${i}`}>
+                              {(sub) => (
+                                <Input
+                                  id={`tags-${i}`}
+                                  value={sub.state.value}
+                                  onChange={(e) =>
+                                    sub.handleChange(e.target.value)
+                                  }
+                                />
+                              )}
+                            </form.Field>
+                          ))}
                         </>
                       )}
                     </form.Field>
