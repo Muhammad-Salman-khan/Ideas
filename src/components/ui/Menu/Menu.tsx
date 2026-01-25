@@ -1,4 +1,4 @@
-import { Edit, EyeClosed, MinusCircleIcon, MoreHorizontal } from "lucide-react";
+import { MoreHorizontal } from "lucide-react";
 import {
   Menubar,
   MenubarContent,
@@ -7,27 +7,29 @@ import {
   MenubarSeparator,
   MenubarTrigger,
 } from "../../menubar";
+import { SquarePenIcon } from "@/components/square-pen";
+import { EyeOffIcon } from "@/components/eye-off";
+import { DeleteIcon } from "@/components/delete";
+import { GripHorizontalIcon } from "@/components/grip-horizontal";
 
 export function MenubarDemo({ id }: { id: string }) {
   return (
     <Menubar key={id} id={id}>
       <MenubarMenu>
         <MenubarTrigger>
-          <MoreHorizontal size={15} />
+          <GripHorizontalIcon size={20} />
         </MenubarTrigger>
         <MenubarContent>
           <MenubarItem>
-            <MinusCircleIcon />
-            Block
+            <EyeOffIcon /> Block
           </MenubarItem>
           <MenubarSeparator />
           <MenubarItem>
-            <EyeClosed />
-            Hide Post
+            <SquarePenIcon /> Edit
           </MenubarItem>
           <MenubarSeparator />
           <MenubarItem>
-            <Edit /> Edit Post
+            <DeleteIcon /> Delete
           </MenubarItem>
         </MenubarContent>
       </MenubarMenu>
