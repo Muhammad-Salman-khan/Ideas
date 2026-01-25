@@ -1,6 +1,6 @@
 import CardIdeas from "@/components/ui/Card/Card";
 import Card from "@/components/ui/Card/Card";
-import { FetchIdeas } from "@/hooks/useFetch";
+import { FetchIdeas } from "@/Api/useFetch";
 import type { Data } from "@/Type";
 import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute, Link } from "@tanstack/react-router";
@@ -19,11 +19,13 @@ export const Route = createFileRoute("/ideas/")({
 
 function IdeasPage() {
   const { data } = useSuspenseQuery(IdeasQueries());
-
+  const NewPosts = [...data].sort(
+    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
+  );
   return (
     <>
       <div className="flex justify-center align-middle mt-12 items-center flex-col">
-        {data?.map((e) => (
+        {NewPosts?.map((e) => (
           <CardIdeas key={e.id} Data={e} />
         ))}
       </div>

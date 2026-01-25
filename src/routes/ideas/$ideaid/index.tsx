@@ -1,6 +1,6 @@
 import { Button } from "@/components/button";
 import DetailCard from "@/components/ui/DetailCard/DetailCard";
-import { FetchData } from "@/hooks/useFetch";
+import { FetchData } from "@/Api/useFetch";
 import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute, Link } from "@tanstack/react-router";
 const ideaQueryOptions = (ideaid: string | number) =>

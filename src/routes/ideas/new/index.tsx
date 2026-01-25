@@ -24,12 +24,24 @@ import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { Info } from "lucide-react";
 import { toast } from "sonner";
 import { FormsSchema, type FormsSchemaType } from "@/schemas";
+import { useMutation } from "@tanstack/react-query";
+import { PostNewIdeas } from "@/Api/useFetch";
 export const Route = createFileRoute("/ideas/new/")({
   component: NewIdea,
 });
 
 function NewIdea() {
   const Navigate = useNavigate();
+  const { mutateAsync, isPending } = useMutation({
+    mutationFn: PostNewIdeas,
+    onError: () => {
+      toast.error("something went wrong");
+    },
+    onSuccess: () => {
+      toast.success("Post uploaded successfully");
+      Navigate({ to: "/ideas" });
+    },
+  });
   const form = useForm({
     defaultValues: {
       title: "",
@@ -40,7 +52,7 @@ function NewIdea() {
       tags: ["informative", "tech", "Ai"],
     } as FormsSchemaType,
     onSubmit: async ({ value }) => {
-      console.log(value);
+      await mutateAsync(value);
     },
     validators: {
       onChange: FormsSchema,
@@ -255,7 +267,9 @@ function NewIdea() {
                 </FieldGroup>
               </FieldSet>
               <Field orientation="horizontal">
-                <Button type="submit">Submit</Button>
+                <Button disabled={isPending} type="submit">
+                  {isPending ? "Creating" : "Submit"}
+                </Button>
                 <Link to="/ideas">
                   <Button variant="outline" type="button">
                     Cancel

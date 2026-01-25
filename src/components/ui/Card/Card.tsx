@@ -39,7 +39,7 @@ const CardIdeas = ({ Data }: { Data: Data }) => {
                     Alex Innovator
                   </h1>
                   <span className="text-foreground text-xs font-medium">
-                    {/* {uploadedAt && } */}
+                    {uploadedAt}
                   </span>
                 </div>
                 <div className="text-blue-500 font-bold text-[10px] tracking-wider uppercase mt-0.5">
