@@ -1,4 +1,3 @@
-import { MoreHorizontal } from "lucide-react";
 import {
   Menubar,
   MenubarContent,
