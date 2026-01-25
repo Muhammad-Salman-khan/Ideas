@@ -2,9 +2,9 @@ import type { Data } from "@/Type";
 import { MessageSquare } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { Badge } from "../../badge";
-import { MenubarDemo } from "../Menu/Menu";
+import Menu from "../Menu/Menu";
 import { Share } from "../ShareDialog/Share";
-import { CardHeader, Card } from "@/components/card";
+import { Card } from "@/components/card";
 import { AspectRatio } from "@/components/aspect-ratio";
 import LikeButton from "../VoteButton/LikeButton";
 
@@ -47,7 +47,7 @@ const CardIdeas = ({ Data }: { Data: Data }) => {
                 </div>
               </div>
             </div>
-            <MenubarDemo id={id} />
+            <Menu id={id} />
           </div>
 
           <div className="mt-2 space-y-3">
@@ -101,7 +101,7 @@ const CardIdeas = ({ Data }: { Data: Data }) => {
                   <span className="text-sm font-semibold">45 Critiques</span>
                 </button>
               </Link>
-              <Share />
+              <Share id={id} />
             </div>
           </div>
         </div>

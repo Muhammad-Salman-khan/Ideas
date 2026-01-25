@@ -25,7 +25,7 @@ const DetailCard = ({ data }: { data: Data }) => {
         </div>
 
         <main className="flex-1 w-full max-w-4xl mx-auto px-4 py-8 md:py-12">
-          <DetailAuthor CreatedAt={createdAt} />
+          <DetailAuthor CreatedAt={createdAt} id={id} />
           <header className="mb-10">
             <h1 className="text-4xl md:text-5xl lg:text-6xl text-foreground leading-tight tracking-tight font-extrabold mb-8">
               {title}

@@ -39,7 +39,7 @@ export const PostNewIdeas = async (e: FormsSchemaType): Promise<any> => {
   }
 };
 
-const DeletePost = async (e): Promise<void> => {
+export const DeletePost = async (e): Promise<void> => {
   try {
     await Api.delete(`/ideas/${e}`);
   } catch (error: any) {

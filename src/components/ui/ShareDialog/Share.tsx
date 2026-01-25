@@ -15,7 +15,7 @@ import { Copy, Share2 } from "lucide-react";
 import { toast } from "sonner";
 import { InputGroup } from "@/components/input-group";
 
-export function Share() {
+export function Share({ id }: { id: string | number }) {
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -37,7 +37,11 @@ export function Share() {
               <Label htmlFor="link" className=" sr-only">
                 Link
               </Label>
-              <Input id="link" defaultValue={location.href} readOnly />
+              <Input
+                id="link"
+                defaultValue={`${location.href}/${id}`}
+                readOnly
+              />
               <Copy
                 className="w-12"
                 onClick={() => {

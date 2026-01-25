@@ -1,7 +1,14 @@
 import { Avatar, AvatarFallback, AvatarImage } from "../../avatar";
+import Menu from "../Menu/Menu";
 import { Share } from "../ShareDialog/Share";
 
-const DetailAuthor = ({ CreatedAt }: { CreatedAt: string }) => {
+const DetailAuthor = ({
+  CreatedAt,
+  id,
+}: {
+  CreatedAt: string;
+  id: number | string;
+}) => {
   return (
     <>
       <div className="flex flex-wrap items-center justify-between gap-6 py-5 border-y border-border">
@@ -38,7 +45,8 @@ const DetailAuthor = ({ CreatedAt }: { CreatedAt: string }) => {
         </div>
 
         <div className="flex items-center gap-3">
-          <Share />
+          <Share id={id} />
+          <Menu id={id} />
         </div>
       </div>
     </>
