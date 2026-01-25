@@ -10,8 +10,14 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/dialog";
+import type { confirmPropType } from "@/schemas/ConfirmDialog";
 
-const ConfirmDialog = ({ isPending, isOpen, id, DeletePosts }) => {
+const ConfirmDialog = ({
+  isPending,
+  isOpen,
+  id,
+  ContinueToDelete,
+}: confirmPropType) => {
   return (
     <>
       <Dialog open={isOpen}>
@@ -54,7 +60,7 @@ const ConfirmDialog = ({ isPending, isOpen, id, DeletePosts }) => {
             <Button
               type="button"
               variant="destructive"
-              onClick={() => DeletePosts(id)}
+              onClick={() => ContinueToDelete(id)}
               disabled={isPending}
             >
               {isPending ? "Deleting…" : "Yes, delete"}

@@ -1,14 +1,3 @@
-import {
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/dialog";
-import { Button } from "@/components/button";
 import { useState } from "react";
 import {
   Menubar,
@@ -24,7 +13,7 @@ import { DeleteIcon } from "@/components/delete";
 import { GripHorizontalIcon } from "@/components/grip-horizontal";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { DeletePost } from "@/Api/useFetch";
-import { Navigate, useNavigate } from "@tanstack/react-router";
+import { useNavigate } from "@tanstack/react-router";
 import { toast } from "sonner";
 import ConfirmDialog from "../ConfirmDialog/ConfirmDialog";
 
@@ -39,7 +28,7 @@ function Menu({ id }: { id: string }) {
       navigate({ to: "/ideas" });
     },
   });
-  const DeletePosts = async (id: string | number) => {
+  const DeletePosts = async (id: string): Promise<void> => {
     try {
       await mutateAsync(id);
       setOpen(false);
@@ -52,10 +41,10 @@ function Menu({ id }: { id: string }) {
   if (isOpen) {
     return (
       <ConfirmDialog
-        DeletePosts={DeletePosts}
+        isPending={isPending}
+        ContinueToDelete={DeletePosts}
         id={id}
         isOpen={isOpen}
-        setOpen={setOpen}
       />
     );
   }
