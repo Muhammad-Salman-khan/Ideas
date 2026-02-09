@@ -22,7 +22,7 @@ function Menu({ id }: { id: string }) {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
   const { mutateAsync, isPending } = useMutation({
-    mutationFn: () => DeletePost(id),
+    mutationFn: (id: string | number) => DeletePost(id),
     onSuccess: () => {
       toast.success("Post deleted Successfully");
       navigate({ to: "/ideas" });
