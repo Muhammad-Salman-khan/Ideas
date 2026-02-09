@@ -16,18 +16,15 @@ const ConfirmDialog = ({
   isPending,
   isOpen,
   id,
+  cancel,
   ContinueToDelete,
 }: confirmPropType) => {
   return (
     <>
       <Dialog open={isOpen}>
         <DialogTrigger asChild>
-          <Button
-            variant="destructive"
-            className="flex items-center gap-2"
-            disabled={isPending}
-          >
-            <DeleteIcon className="h-4 w-4" />
+          <Button variant="destructive" className="flex items-center gap-2">
+            <DeleteIcon onClick={() => cancel(false)} className="h-4 w-4" />
             {isPending ? "Deleting…" : "Delete"}
           </Button>
         </DialogTrigger>
@@ -52,7 +49,11 @@ const ConfirmDialog = ({
 
           <DialogFooter className="mt-6 flex gap-2 sm:justify-end">
             <DialogClose asChild>
-              <Button variant="outline" type="button">
+              <Button
+                variant="outline"
+                onClick={() => cancel(!isOpen)}
+                type="button"
+              >
                 Cancel
               </Button>
             </DialogClose>

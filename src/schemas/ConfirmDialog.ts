@@ -4,5 +4,6 @@ export const confirm = z.object({
   isPending: z.boolean(),
   isOpen: z.boolean(),
   id: z.string(),
+  cancel: z.any(),
   ContinueToDelete: z.any(),
 });

@@ -44,6 +44,7 @@ function Menu({ id }: { id: string }) {
         isPending={isPending}
         ContinueToDelete={DeletePosts}
         id={id}
+        cancel={setOpen}
         isOpen={isOpen}
       />
     );
