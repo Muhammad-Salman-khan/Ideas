@@ -4,21 +4,17 @@ import { FetchIdeas } from "@/Api/useFetch";
 import type { Data } from "@/Type";
 import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { allIdeas } from "@/queryOptions/queryOptions";
 
-const IdeasQueries = () =>
-  queryOptions({
-    queryKey: ["ideas"],
-    queryFn: () => FetchIdeas(),
-  });
 export const Route = createFileRoute("/ideas/")({
   component: IdeasPage,
   loader: async ({ context: { queryClient } }) => {
-    return queryClient.ensureQueryData(IdeasQueries());
+    return queryClient.ensureQueryData(allIdeas());
   },
 });
 
 function IdeasPage() {
-  const { data } = useSuspenseQuery(IdeasQueries());
+  const { data } = useSuspenseQuery(allIdeas());
   const NewPosts = [...data].sort(
     (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
   );

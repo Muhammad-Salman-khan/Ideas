@@ -32,3 +32,10 @@ export const FormsSchema = z.object({
   category: z.string(),
   tags: z.array(z.string()).max(3).optional(),
 });
+
+export type EditSchemaType = z.infer<typeof EditSchema>;
+export const EditSchema = FormsSchema.pick({
+  title: true,
+  summary: true,
+  description: true,
+});

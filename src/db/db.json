@@ -71,14 +71,6 @@
       "description": "As more of life moves online, digital assets are often left unmanaged after death. This service allows users to define how their accounts, files, and messages are handled if they pass away. Trusted contacts receive controlled access based on predefined rules. It bridges the gap between modern digital life and traditional estate planning, giving people peace of mind about their online presence.",
       "tags": ["privacy", "security", "legal"],
       "createdAt": "2025-04-30T11:45:00.000Z"
-    },
-    {
-      "id": "10",
-      "title": "AI Meeting Summarizer",
-      "summary": "Turn meetings into clear action items automatically.",
-      "description": "Meetings often consume time without producing clarity. This tool records and transcribes meetings, then extracts decisions, tasks, and summaries automatically. It integrates with project management tools so outcomes don’t disappear into chat logs. The long-term vision is fewer meetings, better documentation, and clearer accountability across teams.clarity. This tool records and transcribes meetings, then extracts decisions, tasks, and summaries automatically. It integrates with project management tools so outcomes don’t disappear into chat logs. The long-term vision is fewer meetings, better documentation, and clearer accountability across teams.",
-      "tags": ["ai", "productivity", "work"],
-      "createdAt": "2025-04-30T13:00:00.000Z"
     }
   ]
 }

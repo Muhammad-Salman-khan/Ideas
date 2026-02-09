@@ -13,7 +13,7 @@ import { DeleteIcon } from "@/components/delete";
 import { GripHorizontalIcon } from "@/components/grip-horizontal";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { DeletePost } from "@/Api/useFetch";
-import { useNavigate } from "@tanstack/react-router";
+import { Link, useNavigate } from "@tanstack/react-router";
 import { toast } from "sonner";
 import ConfirmDialog from "../ConfirmDialog/ConfirmDialog";
 
@@ -33,6 +33,9 @@ function Menu({ id }: { id: string }) {
       await mutateAsync(id);
       setOpen(false);
       queryClient.invalidateQueries({ queryKey: ["ideas"] });
+      navigate({
+        to: "/ideas",
+      });
     } catch (error: any) {
       console.error(error);
       toast.error(error);
@@ -60,9 +63,11 @@ function Menu({ id }: { id: string }) {
             <EyeOffIcon /> Block
           </MenubarItem>
           <MenubarSeparator />
-          <MenubarItem>
-            <SquarePenIcon /> Edit
-          </MenubarItem>
+          <Link to="/ideas/$ideaid/edit" params={{ ideaid: id }}>
+            <MenubarItem>
+              <SquarePenIcon /> Edit
+            </MenubarItem>
+          </Link>
           <MenubarSeparator />
           <MenubarItem onClick={() => setOpen(!isOpen)}>
             <DeleteIcon /> {isPending ? "Deleting Post" : "Delete"}
