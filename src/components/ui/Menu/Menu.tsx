@@ -28,7 +28,7 @@ function Menu({ id }: { id: string }) {
       navigate({ to: "/ideas" });
     },
   });
-  const DeletePosts = async (id: string): Promise<void> => {
+  const DeletePosts = async (id: any) => {
     try {
       await mutateAsync(id);
       setOpen(false);
