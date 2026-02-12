@@ -1,11 +1,11 @@
 import { z } from "zod";
 
-const ACCEPTED_IMAGE_TYPES = [
-  "image/jpeg",
-  "image/jpg",
-  "image/png",
-  "image/webp",
-];
+// const ACCEPTED_IMAGE_TYPES = [
+//   "image/jpeg",
+//   "image/jpg",
+//   "image/png",
+//   "image/webp",
+// ];
 
 export type FormsSchemaType = z.infer<typeof FormsSchema>;
 export const FormsSchema = z.object({

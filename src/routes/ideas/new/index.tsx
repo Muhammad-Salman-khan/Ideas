@@ -267,14 +267,14 @@ function NewIdea() {
                 </FieldGroup>
               </FieldSet>
               <Field orientation="horizontal">
-                <Button disabled={isPending} type="submit">
-                  {isPending ? "Creating" : "Submit"}
-                </Button>
                 <Link to="/ideas">
                   <Button variant="outline" type="button">
                     Cancel
                   </Button>
                 </Link>
+                <Button disabled={isPending} type="submit">
+                  {isPending ? "Creating" : "Submit"}
+                </Button>
               </Field>
             </FieldGroup>
           </form>

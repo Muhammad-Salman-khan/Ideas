@@ -17,6 +17,7 @@ import { useForm } from "@tanstack/react-form";
 import { useMutation, useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { Info } from "lucide-react";
+import { toast } from "sonner";
 
 export const Route = createFileRoute("/ideas/$ideaid/edit")({
   component: EditPage,
@@ -25,26 +26,34 @@ export const Route = createFileRoute("/ideas/$ideaid/edit")({
 });
 function EditPage() {
   const { ideaid } = Route.useParams();
+  const navigate = useNavigate();
   const { data } = useSuspenseQuery(editIdeas(ideaid));
-  const { mutateAsync, isPending } = useMutation({});
+  const { mutateAsync, isPending } = useMutation({
+    mutationFn: "",
+    onError: () => {
+      toast.error("Something went wrong");
+    },
+    onSuccess: async () => {
+      toast.success(`${data.title} updated successfully`);
+      navigate({ to: `/ideas/${data.id}` });
+    },
+  });
   const form = useForm({
     defaultValues: {
       title: data.title,
       summary: data.summary,
       description: data.description,
     } as EditSchemaType,
-    onSubmit: ({ value }) => {},
+    onSubmit: async ({ value }) => {
+      await mutateAsync(value);
+    },
     validators: {
       onChange: EditSchema,
       onChangeAsyncDebounceMs: 400,
     },
   });
   return (
-    <div>
-      <p>{data.title}</p>
-      <p>{data.summary}</p>
-      <p>{data.description}</p>
-      <p>{data.tags}</p>
+    <>
       <Card className="m-auto mt-5 max-w-3xl">
         <CardHeader className="flex justify-center align-middle items-center flex-col space-y-2.5">
           <CardTitle className="text-4xl text-center font-extrabold">
@@ -144,19 +153,19 @@ function EditPage() {
                 </FieldGroup>
               </FieldSet>
               <Field orientation="horizontal">
-                <Link to="/ideas">
+                <Link to="/ideas/$ideaid" params={{ ideaid: data.id }}>
                   <Button variant="outline" type="button">
                     Cancel
                   </Button>
                 </Link>
                 <Button disabled={isPending} type="submit">
-                  update
+                  {isPending ? "Updating..." : "Update"}
                 </Button>
               </Field>
             </FieldGroup>
           </form>
         </CardContent>
       </Card>
-    </div>
+    </>
   );
 }
