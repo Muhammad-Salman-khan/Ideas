@@ -4,7 +4,9 @@ export function getContext() {
   const queryClient = new QueryClient({
     defaultOptions: {
       queries: {
-        retry: false,
+        // retry: true,
+        // staleTime: 2 * 60 * 1000,
+        // gcTime: 1000 * 60 * 5,
       },
     },
   });

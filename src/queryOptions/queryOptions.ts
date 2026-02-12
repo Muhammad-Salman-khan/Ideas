@@ -8,7 +8,7 @@ export const allIdeas = () =>
 
 export const editIdeas = (id: string | number) =>
   queryOptions({
-    queryKey: ["editIdeas", id],
+    queryKey: ["ideas", id],
     queryFn: () => FetchData(id),
   });
 

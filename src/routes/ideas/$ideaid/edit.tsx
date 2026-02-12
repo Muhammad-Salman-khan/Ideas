@@ -29,7 +29,7 @@ function EditPage() {
   const navigate = useNavigate();
   const { data } = useSuspenseQuery(editIdeas(ideaid));
   const { mutateAsync, isPending } = useMutation({
-    mutationFn: "",
+    mutationFn: "vf",
     onError: () => {
       toast.error("Something went wrong");
     },
