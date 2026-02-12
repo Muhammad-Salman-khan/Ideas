@@ -1,3 +1,4 @@
+import { UpdateIdea } from "@/Api/useFetch";
 import { Button } from "@/components/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/card";
 import {
@@ -16,7 +17,7 @@ import { EditSchema, type EditSchemaType } from "@/schemas";
 import { useForm } from "@tanstack/react-form";
 import { useMutation, useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { Info } from "lucide-react";
+import { ArrowBigLeft, Info } from "lucide-react";
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/ideas/$ideaid/edit")({
@@ -29,12 +30,13 @@ function EditPage() {
   const navigate = useNavigate();
   const { data } = useSuspenseQuery(editIdeas(ideaid));
   const { mutateAsync, isPending } = useMutation({
-    mutationFn: "vf",
+    mutationFn: (data) => UpdateIdea(ideaid, data),
     onError: () => {
       toast.error("Something went wrong");
     },
     onSuccess: async () => {
       toast.success(`${data.title} updated successfully`);
+
       navigate({ to: `/ideas/${data.id}` });
     },
   });
@@ -54,6 +56,11 @@ function EditPage() {
   });
   return (
     <>
+      <Link to="/ideas/$ideaid" params={{ ideaid: data.id }}>
+        <Button>
+          <ArrowBigLeft /> Back
+        </Button>
+      </Link>
       <Card className="m-auto mt-5 max-w-3xl">
         <CardHeader className="flex justify-center align-middle items-center flex-col space-y-2.5">
           <CardTitle className="text-4xl text-center font-extrabold">
