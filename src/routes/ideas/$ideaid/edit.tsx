@@ -18,7 +18,7 @@ import { useMutation, useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { Info } from "lucide-react";
 
-export const Route = createFileRoute("/ideas/$ideaid/edit/")({
+export const Route = createFileRoute("/ideas/$ideaid/edit")({
   component: EditPage,
   loader: async ({ params, context: { queryClient } }) =>
     queryClient.ensureQueryData(editIdeas(params.ideaid)),
@@ -33,12 +33,10 @@ function EditPage() {
       summary: data.summary,
       description: data.description,
     } as EditSchemaType,
-    onSubmit: ({ value }) => {
-      console.log(value);
-    },
+    onSubmit: ({ value }) => {},
     validators: {
       onChange: EditSchema,
-      onChangeAsyncDebounceMs: 500,
+      onChangeAsyncDebounceMs: 400,
     },
   });
   return (
@@ -116,39 +114,35 @@ function EditPage() {
                     </FieldDescription>
                   </Field>
                   <FieldSet>
-                    <FieldGroup>
-                      <Field>
-                        <form.Field name="description">
-                          {(field) => (
-                            <>
-                              <FieldLabel htmlFor="description">
-                                Description
-                              </FieldLabel>
-                              <Textarea
-                                id="description"
-                                placeholder="Add any additional comments"
-                                className="resize overflow-x-auto"
-                                rows={10}
-                                value={field.state.value}
-                                onChange={(e) =>
-                                  field.handleChange(e.target.value)
-                                }
-                              />
-                              <p className="text-destructive capitalize ">
-                                {field.state.meta.errors?.map(
-                                  (e: any) => e?.message,
-                                )}
-                              </p>
-                            </>
-                          )}
-                        </form.Field>
-                      </Field>
-                    </FieldGroup>
+                    <Field>
+                      <form.Field name="description">
+                        {(field) => (
+                          <>
+                            <FieldLabel htmlFor="description">
+                              Description
+                            </FieldLabel>
+                            <Textarea
+                              id="description"
+                              placeholder="Add any additional comments"
+                              className="resize overflow-x-auto"
+                              rows={10}
+                              value={field.state.value}
+                              onChange={(e) =>
+                                field.handleChange(e.target.value)
+                              }
+                            />
+                            <p className="text-destructive capitalize ">
+                              {field.state.meta.errors?.map(
+                                (e: any) => e?.message,
+                              )}
+                            </p>
+                          </>
+                        )}
+                      </form.Field>
+                    </Field>
                   </FieldSet>
                 </FieldGroup>
               </FieldSet>
-              <FieldSeparator />
-
               <Field orientation="horizontal">
                 <Link to="/ideas">
                   <Button variant="outline" type="button">
@@ -156,7 +150,7 @@ function EditPage() {
                   </Button>
                 </Link>
                 <Button disabled={isPending} type="submit">
-                  {isPending ? "Updating" : "Update"}
+                  update
                 </Button>
               </Field>
             </FieldGroup>

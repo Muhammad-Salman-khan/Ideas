@@ -15,7 +15,7 @@ import { Route as IdeasIndexRouteImport } from './routes/ideas/index'
 import { Route as AboutIndexRouteImport } from './routes/about/index'
 import { Route as IdeasNewIndexRouteImport } from './routes/ideas/new/index'
 import { Route as IdeasIdeaidIndexRouteImport } from './routes/ideas/$ideaid/index'
-import { Route as IdeasIdeaidEditIndexRouteImport } from './routes/ideas/$ideaid/edit/index'
+import { Route as IdeasIdeaidEditRouteImport } from './routes/ideas/$ideaid/edit'
 
 const IdeasRouteRoute = IdeasRouteRouteImport.update({
   id: '/ideas',
@@ -47,9 +47,9 @@ const IdeasIdeaidIndexRoute = IdeasIdeaidIndexRouteImport.update({
   path: '/$ideaid/',
   getParentRoute: () => IdeasRouteRoute,
 } as any)
-const IdeasIdeaidEditIndexRoute = IdeasIdeaidEditIndexRouteImport.update({
-  id: '/$ideaid/edit/',
-  path: '/$ideaid/edit/',
+const IdeasIdeaidEditRoute = IdeasIdeaidEditRouteImport.update({
+  id: '/$ideaid/edit',
+  path: '/$ideaid/edit',
   getParentRoute: () => IdeasRouteRoute,
 } as any)
 
@@ -58,17 +58,17 @@ export interface FileRoutesByFullPath {
   '/ideas': typeof IdeasRouteRouteWithChildren
   '/about': typeof AboutIndexRoute
   '/ideas/': typeof IdeasIndexRoute
+  '/ideas/$ideaid/edit': typeof IdeasIdeaidEditRoute
   '/ideas/$ideaid': typeof IdeasIdeaidIndexRoute
   '/ideas/new': typeof IdeasNewIndexRoute
-  '/ideas/$ideaid/edit': typeof IdeasIdeaidEditIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutIndexRoute
   '/ideas': typeof IdeasIndexRoute
+  '/ideas/$ideaid/edit': typeof IdeasIdeaidEditRoute
   '/ideas/$ideaid': typeof IdeasIdeaidIndexRoute
   '/ideas/new': typeof IdeasNewIndexRoute
-  '/ideas/$ideaid/edit': typeof IdeasIdeaidEditIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -76,9 +76,9 @@ export interface FileRoutesById {
   '/ideas': typeof IdeasRouteRouteWithChildren
   '/about/': typeof AboutIndexRoute
   '/ideas/': typeof IdeasIndexRoute
+  '/ideas/$ideaid/edit': typeof IdeasIdeaidEditRoute
   '/ideas/$ideaid/': typeof IdeasIdeaidIndexRoute
   '/ideas/new/': typeof IdeasNewIndexRoute
-  '/ideas/$ideaid/edit/': typeof IdeasIdeaidEditIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -87,26 +87,26 @@ export interface FileRouteTypes {
     | '/ideas'
     | '/about'
     | '/ideas/'
+    | '/ideas/$ideaid/edit'
     | '/ideas/$ideaid'
     | '/ideas/new'
-    | '/ideas/$ideaid/edit'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
     | '/ideas'
+    | '/ideas/$ideaid/edit'
     | '/ideas/$ideaid'
     | '/ideas/new'
-    | '/ideas/$ideaid/edit'
   id:
     | '__root__'
     | '/'
     | '/ideas'
     | '/about/'
     | '/ideas/'
+    | '/ideas/$ideaid/edit'
     | '/ideas/$ideaid/'
     | '/ideas/new/'
-    | '/ideas/$ideaid/edit/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -159,11 +159,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IdeasIdeaidIndexRouteImport
       parentRoute: typeof IdeasRouteRoute
     }
-    '/ideas/$ideaid/edit/': {
-      id: '/ideas/$ideaid/edit/'
+    '/ideas/$ideaid/edit': {
+      id: '/ideas/$ideaid/edit'
       path: '/$ideaid/edit'
       fullPath: '/ideas/$ideaid/edit'
-      preLoaderRoute: typeof IdeasIdeaidEditIndexRouteImport
+      preLoaderRoute: typeof IdeasIdeaidEditRouteImport
       parentRoute: typeof IdeasRouteRoute
     }
   }
@@ -171,16 +171,16 @@ declare module '@tanstack/react-router' {
 
 interface IdeasRouteRouteChildren {
   IdeasIndexRoute: typeof IdeasIndexRoute
+  IdeasIdeaidEditRoute: typeof IdeasIdeaidEditRoute
   IdeasIdeaidIndexRoute: typeof IdeasIdeaidIndexRoute
   IdeasNewIndexRoute: typeof IdeasNewIndexRoute
-  IdeasIdeaidEditIndexRoute: typeof IdeasIdeaidEditIndexRoute
 }
 
 const IdeasRouteRouteChildren: IdeasRouteRouteChildren = {
   IdeasIndexRoute: IdeasIndexRoute,
+  IdeasIdeaidEditRoute: IdeasIdeaidEditRoute,
   IdeasIdeaidIndexRoute: IdeasIdeaidIndexRoute,
   IdeasNewIndexRoute: IdeasNewIndexRoute,
-  IdeasIdeaidEditIndexRoute: IdeasIdeaidEditIndexRoute,
 }
 
 const IdeasRouteRouteWithChildren = IdeasRouteRoute._addFileChildren(
