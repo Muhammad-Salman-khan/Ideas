@@ -37,7 +37,7 @@ function EditPage() {
     onSuccess: async () => {
       toast.success(`${data.title} updated successfully`);
 
-      navigate({ to: `/ideas/${data.id}` });
+      navigate({ to: `/ideas/$ideaid`, params: { ideaid: data.id } });
     },
   });
   const form = useForm({
