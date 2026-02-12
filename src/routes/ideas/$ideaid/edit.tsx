@@ -30,7 +30,7 @@ function EditPage() {
   const navigate = useNavigate();
   const { data } = useSuspenseQuery(editIdeas(ideaid));
   const { mutateAsync, isPending } = useMutation({
-    mutationFn: (data) => UpdateIdea(ideaid, data),
+    mutationFn: (FormData: EditSchemaType) => UpdateIdea(ideaid, FormData),
     onError: () => {
       toast.error("Something went wrong");
     },
