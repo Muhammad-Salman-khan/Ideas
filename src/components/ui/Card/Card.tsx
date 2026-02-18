@@ -10,12 +10,12 @@ import LikeButton from "../VoteButton/LikeButton";
 
 const CardIdeas = ({ Data }: { Data: Data }) => {
   const { documentId: id, title, summary, createdAt, likesCount, tags } = Data;
-  const uploadedAt = new Intl.DateTimeFormat("en-US", {
-    weekday: "short",
-    day: "numeric",
-    month: "numeric",
-    year: "numeric",
-  }).format(new Date(createdAt?._seconds * 1000));
+  // const uploadedAt = new Intl.DateTimeFormat("en-US", {
+  //   weekday: "short",
+  //   day: "numeric",
+  //   month: "numeric",
+  //   year: "numeric",
+  // }).format(new Date(createdAt?._seconds * 1000));
   return (
     <>
       <Card
@@ -38,7 +38,7 @@ const CardIdeas = ({ Data }: { Data: Data }) => {
                     Alex Innovator
                   </h1>
                   <span className="text-foreground text-xs font-medium">
-                    {uploadedAt}
+                    {/* {uploadedAt} */}
                   </span>
                 </div>
                 <div className="text-blue-500 font-bold text-[10px] tracking-wider uppercase mt-0.5">

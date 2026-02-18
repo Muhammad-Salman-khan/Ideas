@@ -20,14 +20,14 @@ const DetailCard = ({ data }: { data: Data }) => {
     description,
     createdAt,
   } = data;
-  const formattedDate = new Intl.DateTimeFormat("en-US", {
-    weekday: "short",
-    day: "numeric",
-    month: "numeric",
-    year: "numeric",
-  }).format(new Date(createdAt?._seconds * 1000));
+  // const formattedDate = new Intl.DateTimeFormat("en-US", {
+  //   weekday: "short",
+  //   day: "numeric",
+  //   month: "numeric",
+  //   year: "numeric",
+  // }).format(new Date(createdAt?._seconds * 1000));
 
-  console.log(formattedDate);
+  // console.log(formattedDate);
   return (
     <>
       <div
@@ -40,7 +40,7 @@ const DetailCard = ({ data }: { data: Data }) => {
           </Link>
         </div>
         <main className="flex-1 w-full max-w-4xl mx-auto px-4 py-8 md:py-12">
-          <DetailAuthor CreatedAt={formattedDate} id={id} />
+          <DetailAuthor CreatedAt={"formattedDate"} id={id} />
           <header className="mb-10">
             <h1 className="text-4xl md:text-5xl lg:text-6xl text-foreground leading-tight tracking-tight font-extrabold mb-8">
               {title}
