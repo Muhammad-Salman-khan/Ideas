@@ -31,14 +31,14 @@ const DetailAuthor = ({
               <span>handle</span>
               <span className="w-1 h-1 rounded-full bg-border" />
               <span>
-                Posted {}
-                {/* {new Intl.DateTimeFormat("en-US", {
+                Posted: {}
+                {new Intl.DateTimeFormat("en-US", {
                   weekday: "short",
                   day: "numeric",
                   month: "numeric",
                   year: "numeric",
                   hour: "numeric",
-                }).format(new Date(CreatedAt))} */}
+                }).format(new Date(CreatedAt))}
               </span>
             </div>
           </div>
