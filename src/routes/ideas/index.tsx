@@ -15,15 +15,19 @@ export const Route = createFileRoute("/ideas/")({
 
 function IdeasPage() {
   const { data } = useSuspenseQuery(allIdeas());
-  const NewPosts = [...data].sort(
-    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
-  );
+  const NewPosts =
+    data.length > 0 ?
+      [...data].sort(
+        (a, b) =>
+          new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
+      )
+    : undefined;
   return (
     <>
       <div className="flex justify-center align-middle mt-12 items-center flex-col">
-        {NewPosts?.map((e) => (
-          <CardIdeas key={e.id} Data={e} />
-        ))}
+        {NewPosts?.length > 0 ?
+          NewPosts?.map((e) => <CardIdeas key={e.documentId} Data={e} />)
+        : "No Post Aviable"}
       </div>
     </>
   );
