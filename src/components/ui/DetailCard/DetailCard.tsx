@@ -50,13 +50,13 @@ const DetailCard = ({ data }: { data: Data }) => {
           <DetailCardSummary summary={summary} />
 
           <div className="relative rounded-2xl overflow-hidden mb-12 group shadow-2xl shadow-blue-500/5">
-            <AspectRatio ratio={16 / 9} className="bg-muted rounded-lg">
+            {/* <AspectRatio ratio={16 / 9} className="bg-muted rounded-lg">
               <img
                 src="https://picsum.photos/seed/picsum/600"
                 alt="System Architecture"
                 className="w-full aspect-video object-cover transition-transform duration-700 group-hover:scale-104"
               />
-            </AspectRatio>
+            </AspectRatio> */}
             <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
             <div className="absolute bottom-6 left-6">
               <span className="bg-black/40 backdrop-blur-md px-3 py-1.5 rounded text-xs font-semibold border border-white/10 uppercase tracking-widest">
