@@ -9,6 +9,8 @@ import { routeTree } from "./routeTree.gen";
 import "./styles.css";
 import reportWebVitals from "./reportWebVitals.ts";
 import ThemeContext from "./Contexts/ThemeContext.tsx";
+import FireBasePROvider from "./Contexts/firebase.tsx";
+import Auth from "./Contexts/Auth.tsx";
 const TanStackQueryProviderContext = TanStackQueryProvider.getContext();
 const router = createRouter({
   routeTree,
@@ -33,11 +35,15 @@ if (rootElement && !rootElement.innerHTML) {
   root.render(
     <StrictMode>
       <TanStackQueryProvider.Provider {...TanStackQueryProviderContext}>
-        <ThemeContext>
-          <RouterProvider router={router} />
-        </ThemeContext>
+        <FireBasePROvider>
+          <Auth>
+            <ThemeContext>
+              <RouterProvider router={router} />
+            </ThemeContext>
+          </Auth>
+        </FireBasePROvider>
       </TanStackQueryProvider.Provider>
-    </StrictMode>
+    </StrictMode>,
   );
 }
 reportWebVitals();

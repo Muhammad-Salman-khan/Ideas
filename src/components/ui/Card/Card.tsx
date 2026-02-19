@@ -5,11 +5,21 @@ import { Badge } from "../../badge";
 import Menu from "../Menu/Menu";
 import { Share } from "../ShareDialog/Share";
 import { Card } from "@/components/card";
-import { AspectRatio } from "@/components/aspect-ratio";
 import LikeButton from "../VoteButton/LikeButton";
+import { auth } from "@/lib/firebase";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/avatar";
 
 const CardIdeas = ({ Data }: { Data: Data }) => {
-  const { documentId: id, title, summary, createdAt, likesCount, tags } = Data;
+  const {
+    documentId: id,
+    userId,
+    username,
+    title,
+    summary,
+    createdAt,
+    likesCount,
+    tags,
+  } = Data;
   const uploadedAt = new Intl.DateTimeFormat("en-US", {
     weekday: "short",
     day: "numeric",
@@ -26,23 +36,19 @@ const CardIdeas = ({ Data }: { Data: Data }) => {
           <div className="flex items-start justify-between">
             <div className="flex items-center space-x-3">
               <div className="relative">
-                <img
-                  src="https://picsum.photos/id/64/64/64"
-                  alt="Alex Innovator"
-                  className="w-10 h-10 rounded-full border-2 border-slate-700 object-cover"
-                />
+                <Avatar>
+                  <AvatarImage />
+                  <AvatarFallback>User</AvatarFallback>
+                </Avatar>
               </div>
               <div>
                 <div className="flex items-center space-x-2">
                   <h1 className="text-foreground font-semibold text-base">
-                    Alex Innovator
+                    {username}
                   </h1>
                   <span className="text-foreground text-xs font-medium">
                     {uploadedAt}
                   </span>
-                </div>
-                <div className="text-blue-500 font-bold text-[10px] tracking-wider uppercase mt-0.5">
-                  t #ID-1024
                 </div>
               </div>
             </div>

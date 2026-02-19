@@ -7,6 +7,7 @@ import { Link } from "@tanstack/react-router";
 import { useTheme } from "@/Contexts/ThemeContext";
 import { Moon, Sun } from "lucide-react";
 import User from "../User/User";
+import { auth } from "@/lib/firebase";
 
 const menuItems = [
   { name: "Get Started", href: "/ideas" },
@@ -34,7 +35,7 @@ export const Header = () => {
           className={cn(
             "mx-auto  max-w-6xl px-6 transition-all duration-300 lg:px-12",
             isScrolled &&
-              "bg-background/80 max-w-4xl rounded-2xl border backdrop-blur-lg lg:px-5"
+              "bg-background/80 max-w-4xl rounded-2xl border backdrop-blur-lg lg:px-5",
           )}
         >
           <div className="relative flex flex-wrap items-center justify-between gap-6 py-3 lg:gap-0 lg:py-4">
@@ -110,31 +111,31 @@ export const Header = () => {
                   onClick={() => switchTheme()}
                   className={cn(isScrolled && ``)}
                 >
-                  {Theme === "dark" ? <Sun /> : <Moon />}
+                  {Theme === "dark" ?
+                    <Sun />
+                  : <Moon />}
                 </Button>
-                {false ? (
-                  <div className="gap-2">
+                {!auth.currentUser ?
+                  <div className="gap-2 space-x-1">
                     <Button
                       variant="default"
                       size="sm"
                       className={cn(
                         isScrolled &&
-                          "bg-primary text-primary-foreground font-bold"
+                          "bg-primary text-primary-foreground font-bold",
                       )}
                     >
-                      <Link className="font-bold" to="/">
+                      <Link className="font-bold" to="/login">
                         <span>Login</span>
                       </Link>
                     </Button>
                     <Button size="sm" className={cn(isScrolled)}>
-                      <Link className="font-bold" to="/">
+                      <Link className="font-bold" to="/register">
                         <span>Sign Up</span>
                       </Link>
                     </Button>
                   </div>
-                ) : (
-                  <User />
-                )}
+                : <User />}
               </div>
             </div>
           </div>

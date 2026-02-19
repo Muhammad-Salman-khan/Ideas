@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { email, z } from "zod";
 
 // const ACCEPTED_IMAGE_TYPES = [
 //   "image/jpeg",
@@ -39,3 +39,13 @@ export const EditSchema = FormsSchema.pick({
   summary: true,
   description: true,
 });
+export type SignUpFormType = z.infer<typeof SignUpForm>;
+export const SignUpForm = z.object({
+  firstName: z.string(),
+  lastName: z.string(),
+  email: z.email(),
+  password: z.string(),
+});
+
+export const LoginSchema = SignUpForm.pick({ email: true, password: true });
+export type LoginSchemaType = z.infer<typeof LoginSchema>;

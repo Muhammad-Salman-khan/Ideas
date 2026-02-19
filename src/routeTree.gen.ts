@@ -10,16 +10,22 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IdeasRouteRouteImport } from './routes/ideas/route'
+import { Route as authRouteRouteImport } from './routes/(auth)/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as IdeasIndexRouteImport } from './routes/ideas/index'
-import { Route as AboutIndexRouteImport } from './routes/about/index'
 import { Route as IdeasNewIndexRouteImport } from './routes/ideas/new/index'
 import { Route as IdeasIdeaidIndexRouteImport } from './routes/ideas/$ideaid/index'
+import { Route as authRegisterIndexRouteImport } from './routes/(auth)/register/index'
+import { Route as authLoginIndexRouteImport } from './routes/(auth)/login/index'
 import { Route as IdeasIdeaidEditRouteImport } from './routes/ideas/$ideaid/edit'
 
 const IdeasRouteRoute = IdeasRouteRouteImport.update({
   id: '/ideas',
   path: '/ideas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const authRouteRoute = authRouteRouteImport.update({
+  id: '/(auth)',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -32,11 +38,6 @@ const IdeasIndexRoute = IdeasIndexRouteImport.update({
   path: '/',
   getParentRoute: () => IdeasRouteRoute,
 } as any)
-const AboutIndexRoute = AboutIndexRouteImport.update({
-  id: '/about/',
-  path: '/about/',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IdeasNewIndexRoute = IdeasNewIndexRouteImport.update({
   id: '/new/',
   path: '/new/',
@@ -47,6 +48,16 @@ const IdeasIdeaidIndexRoute = IdeasIdeaidIndexRouteImport.update({
   path: '/$ideaid/',
   getParentRoute: () => IdeasRouteRoute,
 } as any)
+const authRegisterIndexRoute = authRegisterIndexRouteImport.update({
+  id: '/register/',
+  path: '/register/',
+  getParentRoute: () => authRouteRoute,
+} as any)
+const authLoginIndexRoute = authLoginIndexRouteImport.update({
+  id: '/login/',
+  path: '/login/',
+  getParentRoute: () => authRouteRoute,
+} as any)
 const IdeasIdeaidEditRoute = IdeasIdeaidEditRouteImport.update({
   id: '/$ideaid/edit',
   path: '/$ideaid/edit',
@@ -56,27 +67,31 @@ const IdeasIdeaidEditRoute = IdeasIdeaidEditRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/ideas': typeof IdeasRouteRouteWithChildren
-  '/about': typeof AboutIndexRoute
   '/ideas/': typeof IdeasIndexRoute
   '/ideas/$ideaid/edit': typeof IdeasIdeaidEditRoute
+  '/login': typeof authLoginIndexRoute
+  '/register': typeof authRegisterIndexRoute
   '/ideas/$ideaid': typeof IdeasIdeaidIndexRoute
   '/ideas/new': typeof IdeasNewIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/about': typeof AboutIndexRoute
   '/ideas': typeof IdeasIndexRoute
   '/ideas/$ideaid/edit': typeof IdeasIdeaidEditRoute
+  '/login': typeof authLoginIndexRoute
+  '/register': typeof authRegisterIndexRoute
   '/ideas/$ideaid': typeof IdeasIdeaidIndexRoute
   '/ideas/new': typeof IdeasNewIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/(auth)': typeof authRouteRouteWithChildren
   '/ideas': typeof IdeasRouteRouteWithChildren
-  '/about/': typeof AboutIndexRoute
   '/ideas/': typeof IdeasIndexRoute
   '/ideas/$ideaid/edit': typeof IdeasIdeaidEditRoute
+  '/(auth)/login/': typeof authLoginIndexRoute
+  '/(auth)/register/': typeof authRegisterIndexRoute
   '/ideas/$ideaid/': typeof IdeasIdeaidIndexRoute
   '/ideas/new/': typeof IdeasNewIndexRoute
 }
@@ -85,34 +100,38 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/ideas'
-    | '/about'
     | '/ideas/'
     | '/ideas/$ideaid/edit'
+    | '/login'
+    | '/register'
     | '/ideas/$ideaid'
     | '/ideas/new'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/about'
     | '/ideas'
     | '/ideas/$ideaid/edit'
+    | '/login'
+    | '/register'
     | '/ideas/$ideaid'
     | '/ideas/new'
   id:
     | '__root__'
     | '/'
+    | '/(auth)'
     | '/ideas'
-    | '/about/'
     | '/ideas/'
     | '/ideas/$ideaid/edit'
+    | '/(auth)/login/'
+    | '/(auth)/register/'
     | '/ideas/$ideaid/'
     | '/ideas/new/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  authRouteRoute: typeof authRouteRouteWithChildren
   IdeasRouteRoute: typeof IdeasRouteRouteWithChildren
-  AboutIndexRoute: typeof AboutIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -122,6 +141,13 @@ declare module '@tanstack/react-router' {
       path: '/ideas'
       fullPath: '/ideas'
       preLoaderRoute: typeof IdeasRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(auth)': {
+      id: '/(auth)'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof authRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -138,13 +164,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IdeasIndexRouteImport
       parentRoute: typeof IdeasRouteRoute
     }
-    '/about/': {
-      id: '/about/'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AboutIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/ideas/new/': {
       id: '/ideas/new/'
       path: '/new'
@@ -159,6 +178,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IdeasIdeaidIndexRouteImport
       parentRoute: typeof IdeasRouteRoute
     }
+    '/(auth)/register/': {
+      id: '/(auth)/register/'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof authRegisterIndexRouteImport
+      parentRoute: typeof authRouteRoute
+    }
+    '/(auth)/login/': {
+      id: '/(auth)/login/'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof authLoginIndexRouteImport
+      parentRoute: typeof authRouteRoute
+    }
     '/ideas/$ideaid/edit': {
       id: '/ideas/$ideaid/edit'
       path: '/$ideaid/edit'
@@ -168,6 +201,20 @@ declare module '@tanstack/react-router' {
     }
   }
 }
+
+interface authRouteRouteChildren {
+  authLoginIndexRoute: typeof authLoginIndexRoute
+  authRegisterIndexRoute: typeof authRegisterIndexRoute
+}
+
+const authRouteRouteChildren: authRouteRouteChildren = {
+  authLoginIndexRoute: authLoginIndexRoute,
+  authRegisterIndexRoute: authRegisterIndexRoute,
+}
+
+const authRouteRouteWithChildren = authRouteRoute._addFileChildren(
+  authRouteRouteChildren,
+)
 
 interface IdeasRouteRouteChildren {
   IdeasIndexRoute: typeof IdeasIndexRoute
@@ -189,8 +236,8 @@ const IdeasRouteRouteWithChildren = IdeasRouteRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  authRouteRoute: authRouteRouteWithChildren,
   IdeasRouteRoute: IdeasRouteRouteWithChildren,
-  AboutIndexRoute: AboutIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

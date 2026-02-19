@@ -29,3 +29,13 @@ export type FormType = {
   tags?: string[];
   image?: File[] | undefined;
 };
+
+const UserData = z.object({
+  uid: z.string(),
+  email: z.string(),
+  displayName: z.string().optional(),
+  photoURL: z.string().optional(),
+  bio: z.string().optional(),
+  username: z.string().optional,
+});
+export type UserDataTypes = z.infer<typeof UserData>;

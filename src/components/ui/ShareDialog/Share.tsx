@@ -39,13 +39,15 @@ export function Share({ id }: { id: string | number }) {
               </Label>
               <Input
                 id="link"
-                defaultValue={`${location.href}/${id}`}
+                defaultValue={`https://ideas-ashen.vercel.app/ideas/${id}`}
                 readOnly
               />
               <Copy
                 className="w-12"
                 onClick={() => {
-                  window.navigator.clipboard.writeText(location.href);
+                  window.navigator.clipboard.writeText(
+                    `https://ideas-ashen.vercel.app/ideas/${id}`,
+                  );
                   toast.success("Copied");
                 }}
               />

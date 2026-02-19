@@ -15,6 +15,8 @@ const DetailCard = ({ data }: { data: Data }) => {
     documentId: id,
     title,
     summary,
+    userId,
+    username,
     tags,
     likesCount,
     description,
@@ -40,7 +42,11 @@ const DetailCard = ({ data }: { data: Data }) => {
           </Link>
         </div>
         <main className="flex-1 w-full max-w-4xl mx-auto px-4 py-8 md:py-12">
-          <DetailAuthor CreatedAt={formattedDate} id={id} />
+          <DetailAuthor
+            UserProfile={username}
+            CreatedAt={formattedDate}
+            id={id}
+          />
           <header className="mb-10">
             <h1 className="text-4xl md:text-5xl lg:text-6xl text-foreground leading-tight tracking-tight font-extrabold mb-8">
               {title}
@@ -76,7 +82,7 @@ const DetailCard = ({ data }: { data: Data }) => {
             />
             <div className=" flex justify-between align-middle items-center gap-2.5">
               <GitCommitVerticalIcon />
-              <Share />
+              <Share id={id} />
             </div>
           </div>
         </main>

@@ -26,6 +26,7 @@ import { toast } from "sonner";
 import { FormsSchema, type FormsSchemaType } from "@/schemas";
 import { useMutation } from "@tanstack/react-query";
 import { PostNewIdeas } from "@/Api/useFetch";
+import { auth } from "@/lib/firebase";
 export const Route = createFileRoute("/ideas/new/")({
   component: NewIdea,
 });
@@ -44,6 +45,8 @@ function NewIdea() {
   });
   const form = useForm({
     defaultValues: {
+      userId: auth.currentUser?.uid,
+      username: auth.currentUser?.displayName,
       title: "",
       summary: "",
       description: "",
@@ -53,6 +56,7 @@ function NewIdea() {
     } as FormsSchemaType,
     onSubmit: async ({ value }) => {
       await mutateAsync(value);
+      console.log({ ...value });
     },
     validators: {
       onChange: FormsSchema,
