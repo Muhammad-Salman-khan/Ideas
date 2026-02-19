@@ -15,7 +15,6 @@ const DetailCard = ({ data }: { data: Data }) => {
     documentId: id,
     title,
     summary,
-    userId,
     username,
     tags,
     likesCount,
