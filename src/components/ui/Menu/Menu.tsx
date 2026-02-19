@@ -16,8 +16,9 @@ import { DeletePost } from "@/Api/useFetch";
 import { Link, useNavigate } from "@tanstack/react-router";
 import { toast } from "sonner";
 import ConfirmDialog from "../ConfirmDialog/ConfirmDialog";
+import { auth } from "@/lib/firebase";
 
-function Menu({ id }: { id: string }) {
+function Menu({ id, userId }: { id: string; userId: string }) {
   const [isOpen, setOpen] = useState<boolean>(false);
   const navigate = useNavigate();
   const queryClient = useQueryClient();
@@ -62,16 +63,22 @@ function Menu({ id }: { id: string }) {
           <MenubarItem>
             <EyeOffIcon /> Block
           </MenubarItem>
-          <MenubarSeparator />
-          <Link to="/ideas/$ideaid/edit" params={{ ideaid: id }}>
-            <MenubarItem>
-              <SquarePenIcon /> Edit
+          {auth.currentUser?.uid == userId ?
+            <>
+              <MenubarSeparator />
+              <Link to="/ideas/$ideaid/edit" params={{ ideaid: id }}>
+                <MenubarItem>
+                  <SquarePenIcon /> Edit
+                </MenubarItem>
+              </Link>
+              <MenubarSeparator />
+            </>
+          : ""}
+          {auth.currentUser?.uid == userId ?
+            <MenubarItem onClick={() => setOpen(!isOpen)}>
+              <DeleteIcon /> {isPending ? "Deleting Post" : "Delete"}
             </MenubarItem>
-          </Link>
-          <MenubarSeparator />
-          <MenubarItem onClick={() => setOpen(!isOpen)}>
-            <DeleteIcon /> {isPending ? "Deleting Post" : "Delete"}
-          </MenubarItem>
+          : ""}
         </MenubarContent>
       </MenubarMenu>
     </Menubar>

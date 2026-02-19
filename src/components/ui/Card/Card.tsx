@@ -52,7 +52,7 @@ const CardIdeas = ({ Data }: { Data: Data }) => {
                 </div>
               </div>
             </div>
-            <Menu id={id} />
+            <Menu id={id} userId={userId} />
           </div>
 
           <Link
